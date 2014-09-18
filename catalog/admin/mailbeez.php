@@ -37,7 +37,7 @@ if (isset($_POST['cloudloader_mode']) || isset($_GET['cloudloader_mode'])) {
     @include(MH_DIR_FS_CATALOG . 'mailhive/cloudbeez/dev_environment.php');
     require_once(MH_DIR_FS_CATALOG . 'mailhive/cloudbeez/cloudloader/bootstrap/inc_mailbeez.php');
 } else {
-    if (file_exists(MH_DIR_FS_CATALOG . 'mailhive/common/main/inc_mailbeez.php') && defined('MAILBEEZ_VERSION')) {
+    if (file_exists(MH_DIR_FS_CATALOG . 'mailhive/common/main/inc_mailbeez.php')) {
         // mailbeez installed
         require_once(MH_DIR_FS_CATALOG . 'mailhive/common/main/inc_mailbeez.php');
     } else {
