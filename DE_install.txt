@@ -1,10 +1,12 @@
-MailBeez Installations- und Update-Programm
+MailBeez CloudLoader Installations- und Update-Programm
+-------------------------------------------------------------------
 
-Alle Dateien entsprechend der Struktur auf den Server kopieren, also
 
-<shop-root>/<admin>/mailbeez.php
-<shop-root>/mailhive/
-<shop-root>/mailhive.php
+Alle Dateien des MailBeez Cloudloader entsprechend der Struktur auf den Server kopieren, also
+
+    <shop-root>/<admin>/mailbeez.php
+    <shop-root>/mailhive/
+    <shop-root>/mailhive.php
 
 
 <shop-root> - das Hauptverzeichnis der Shop-Installation
@@ -15,6 +17,22 @@ alle Dateien und Verzeichnisse unterhalb /mailhive/ muessen schreibbar sein, sie
 http://helpdesk.mailbeez.com/990870-MailBeez-Installer-Hilfe
 
 
+====================================================================
+  NEU-INSTALLATION
+====================================================================
+
+Die Neu-Installation fuer das jeweilige Shop-System  wie auf
+
+    http://www.mailbeez.de/dokumentation/installation/
+
+beschrieben vornehmen, um das System z.B. in das Admin-Menu zu integrieren.
+Im extras-Verzeichnis befinden sich passende Plugins.
+
+
+
+====================================================================
+  UPDATE
+====================================================================
 
 zum manuellen updaten
 
@@ -22,6 +40,8 @@ http://<mein-shop>/<admin>/mailbeez.php?cloudloader_mode=update_core
 
 im Browser aufrufen - dann erscheint der Update-Dialog.
 
+
+Ab Version 2.9.6 wird bei neuen Versionen ein Button zum updaten erscheinen.
 
 Beim Updaten passiert folgendes:
 
