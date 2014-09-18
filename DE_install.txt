@@ -1,0 +1,48 @@
+MailBeez Installations- und Update-Programm
+
+Alle Dateien entsprechend der Struktur auf den Server kopieren, also
+
+<shop-root>/<admin>/mailbeez.php
+<shop-root>/mailhive/
+<shop-root>/mailhive.php
+
+
+<shop-root> - das Hauptverzeichnis der Shop-Installation
+<admin>     - das admin-Verzeichnis (bei Gambio, modified-shop und commerce-seo typisch "admin")
+
+
+alle Dateien und Verzeichnisse unterhalb /mailhive/ muessen schreibbar sein, siehe auch
+http://helpdesk.mailbeez.com/990870-MailBeez-Installer-Hilfe
+
+
+
+zum manuellen updaten
+
+http://<mein-shop>/<admin>/mailbeez.php?cloudloader_mode=update_core
+
+im Browser aufrufen - dann erscheint der Update-Dialog.
+
+
+Beim Updaten passiert folgendes:
+
+- Die System-Voraussetzungen werden geprueft
+- Es wird ein Backup (Zip-Datei) der vorhanden Installation (/mailhive/) erstellt und in 
+  /mailhive/cloudbeez/backup abgelegt
+- die aktuelle Version wird geladen und entpackt
+- alle vorhandenen Dateien werden auf Schreibrechte geprüft
+- die vorhandenen Dateien werden mit den neuen Versionen ueberschrieben
+
+Es werden nur Dateien innerhalb des /mailhive Verzeichnisses aktualisiert.
+Die Aktualisierung startet nur dann, wenn alle zu aktualisierenden Dateien schreibbar sind
+
+Es werden die globalen Email-Vorlagen ueberschrieben,
+
+/mailhive/common/templates/email_html.tpl
+/mailhive/common/templates/email_txt.tpl
+
+Falls die Vorlagen-Verwaltung 
+http://www.mailbeez.de/dokumentation/configbeez/config_tmplmngr/ 
+installiert ist, hat dies keine Bedeutung, da die Vorlagen in der Datenbank verwaltet werden.
+
+Andernfalls die Vorlagen aus dem Backup wieder herstellen bzw. die neue Version der Vorlagen 
+erneut anpassen.

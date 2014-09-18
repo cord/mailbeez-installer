@@ -1,0 +1,19 @@
+osCommerce 2.2x & 2.3x
+	
+Modify your Store-Files like following:
+
+
+file:
+
+	includes/footer.php
+
+insert at the end (before the closing ?> ) following code
+
+    // MailBeez
+    if (defined('MAILBEEZ_MOUSEFLOW_STATUS') && MAILBEEZ_MOUSEFLOW_STATUS == 'True') {
+        require_once(DIR_FS_CATALOG . 'mailhive/configbeez/config_mouseflow/includes/mouseflow_inc.php');
+    }
+    // - MailBeez
+    
+
+    

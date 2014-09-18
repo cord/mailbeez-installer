@@ -1,0 +1,14 @@
+RCI based installation changes installation steps as follows (in reference to http://www.mailbeez.com/documentation/installation/basic-installation-cre-loaded/):
+
+
+change 
+
+
+change step 2 (modify existing files) to:
+
+
+Step 2: Install Runtime Code Inclusion files:
+
+Upload the contents of the extras_creloaded folder to your catalog-directory (where your index.php is located).
+
+

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- {load_language_text section="admin_menu"} -->
+
+<admin_menu>
+   <menugroup id="BOX_HEADING_MAILBEEZ" sort="1000" background="module.png" title="MailBeez">
+               <menuitem link="mailbeez.php" link_param="" sort="1" title="Mailbeez" />
+       </menugroup>
+</admin_menu> 

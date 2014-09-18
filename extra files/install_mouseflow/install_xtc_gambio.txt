@@ -1,0 +1,22 @@
+xtcommerce, xtc-modified, Gambio GX:
+
+Zur Installation folgende Modifikation durchfuehren:
+
+
+
+Datei:
+
+	includes/application_bottom.php
+
+finde
+
+    echo '</body></html>';
+
+
+davor folgenden code einfuegen:
+
+    // MailBeez
+    if (defined('MAILBEEZ_MOUSEFLOW_STATUS') && MAILBEEZ_MOUSEFLOW_STATUS == 'True') {
+        require_once(DIR_FS_CATALOG . 'mailhive/configbeez/config_mouseflow/includes/mouseflow_inc.php');
+    }
+    // - MailBeez

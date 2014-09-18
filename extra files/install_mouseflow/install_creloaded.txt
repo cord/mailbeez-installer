@@ -1,0 +1,26 @@
+CRE Loaded before V6.4.2:
+
+
+install the configbeez module following the instructions in
+
+	install.txt
+	
+	
+	
+Modify your Store-Files like following:
+
+
+copy RCI file 
+
+	mailbeez_mouseflow_applicationbottom_bottom.php
+
+from
+
+	<this zip-archive>/extras_creloaded/includes/runtime/applicationbottom/
+	
+to
+	<cre-root>/includes/runtime/applicationbottom/
+	
+	
+	
+	

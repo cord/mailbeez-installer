@@ -1,0 +1,25 @@
+Mouseflow is a System that allows your to track and analyse how Visitors are using your Shop.
+Since Version 2.6 Mouseflow is pre-integrated with MailBeez.
+
+More Information about Mouseflow:
+http://www.mailbeez.com/documentation/configbeez/config_mouseflow/
+
+Coupon for 500 Credits:
+	
+	MAILBEEZ12
+
+
+Please activate the MouseFlow Integration in MailBeez > Configuration. Now you need to do a
+small code edit in your Store.
+
+Please follow the instructions for your platform:
+
+	install_oscommerce.txt
+	install_creloaded.txt
+	install_zencart.txt
+	install_xtc_gambio.txt
+
+
+You will find online help for configuring the module in the MailBeez Administration:
+
+	Documentation available (View Online)

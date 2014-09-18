@@ -1,0 +1,46 @@
+MailBeez Installation and Update-Routine
+
+Copy all files according their structure on your server:
+
+<shop-root>/<admin>/mailbeez.php
+<shop-root>/mailhive/
+<shop-root>/mailhive.php
+
+
+<shop-root> - main directory of your store
+<admin>     - admin-directory (can be "admin" or a custom folder name)
+
+all files and folders inside /mailhive/ must be write-able, also check out
+http://helpdesk.mailbeez.com/696102-MailBeez-Installer-Help
+
+For manual updating open
+
+http://<my store>/<admin>/mailbeez.php?cloudloader_mode=update_core
+
+in a browser to open the update dialog.
+
+Following steps are performed
+- system requirement check
+- backup (zip) of the current installation (/mailhive), stored in 
+  /mailhive/cloudbeez/backup
+- download and extract of the current release
+- check for write permissions
+- update all file
+
+Only files located in /mailhive will be updated.
+
+The update will start only when all affected files are write-able.
+
+the common email templates
+
+/mailhive/common/templates/email_html.tpl
+/mailhive/common/templates/email_txt.tpl
+
+will be overwritten.
+
+If you have installed the Template Manager
+http://www.mailbeez.com/documentation/configbeez/config_tmplmngr/
+this will have not effect for you as all templates are managed in your database.
+
+Otherwise you can restore these files from you backup or you can adjust the latest version of 
+these templates to your needs.

@@ -1,0 +1,12 @@
+Gemaess
+
+http://www.mailbeez.de/dokumentation/installation/basic-installation-gambio-gx-2/
+
+Die Datei
+
+/system/conf/AdminMenu/menu_mailbeez.xml
+
+
+kopieren und (shop)/mailhive.php aufrufen.
+
+Nach einem erneuten Login wird MailBeez im Abschnitt “Zusatzmodule” erscheinen
