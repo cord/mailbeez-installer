@@ -33,12 +33,15 @@ if (substr(DIR_WS_CATALOG, -1) != '/') {
 }
 
 if (isset($_POST['cloudloader_mode']) || isset($_GET['cloudloader_mode'])) {
+    // installer entrypoint
     @include(MH_DIR_FS_CATALOG . 'mailhive/cloudbeez/dev_environment.php');
     require_once(MH_DIR_FS_CATALOG . 'mailhive/cloudbeez/cloudloader/bootstrap/inc_mailbeez.php');
 } else {
-    if (file_exists(MH_DIR_FS_CATALOG . 'mailhive/common/main/inc_mailbeez.php')) {
+    if (file_exists(MH_DIR_FS_CATALOG . 'mailhive/common/main/inc_mailbeez.php') && defined('MAILBEEZ_VERSION')) {
+        // mailbeez installed
         require_once(MH_DIR_FS_CATALOG . 'mailhive/common/main/inc_mailbeez.php');
     } else {
+        // not yet installed, load installer
         @include(MH_DIR_FS_CATALOG . 'mailhive/common/local/devsettings.php');
         // Please install MailBeez
         if (defined('MAILBEEZ_INSTALLER_DISABLED') && MAILBEEZ_INSTALLER_DISABLED) {

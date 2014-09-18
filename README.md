@@ -5,4 +5,4 @@ This installer will install the latest version of www.mailbeez.com into supporte
 
 
 
-thanks to octobercms.com providing a great installer
+thanks to octobercms.com providing a great installer to learn from
