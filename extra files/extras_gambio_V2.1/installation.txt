@@ -9,4 +9,4 @@ Die Datei
 
 kopieren und (shop)/mailhive.php aufrufen.
 
-Nach einem erneuten Login wird MailBeez im Abschnitt “Zusatzmodule” erscheinen
+Nach einem erneuten Login wird MailBeez im Abschnitt 'Zusatzmodule' erscheinen

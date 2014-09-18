@@ -12,7 +12,9 @@
 
  */
 
-if (!@include_once('mailhive/common/main/inc_mailhive.php')) {
+if (file_exists('mailhive/common/main/inc_mailhive.php')) {
+    include_once('mailhive/common/main/inc_mailhive.php');
+} else {
     // cloudloader installation
 
     require_once('includes/application_top.php');
