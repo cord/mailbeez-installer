@@ -17,7 +17,7 @@ Installer.Pages.systemCheck.init = function() {
         eventChain.push(function(){
             var deferred = $.Deferred();
 
-            var item = $('<li />').addClass('animated-content move_right').text(requirement.label)
+            var item = $('<li />').addClass('animated-content move_right').html(requirement.label)
             item.addClass('load animate fade_in')
             checkList.append(item)
 

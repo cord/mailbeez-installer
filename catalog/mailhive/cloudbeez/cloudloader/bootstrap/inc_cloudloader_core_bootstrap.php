@@ -7,55 +7,32 @@ include $base_path . 'cloudloader/php/boot.php';
 
 $screen_img = 'screen_osc.png';
 
-/*
 
 switch (MH_PLATFORM) {
     case 'oscommerce':
-        if (MH_PLATFORM_OSC_23) {
-            $admin_template = 'main_osc23.tpl.php';
-        }
-        if (MH_PLATFORM_OSCMAX_25) {
-            $admin_template = 'main_oscmax25.tpl.php';
-        }
-        if (MH_PLATFORM_TRUELOADED) {
-            $admin_template = 'main_trueloaded.tpl.php';
-        }
+        // default
         break;
     case 'creloaded':
-        if (INSTALLED_VERSION_MAJOR == 6 && INSTALLED_VERSION_MINOR == 2) {
-            $admin_template = 'main_creloaded_62.tpl.php';
-        } else {
-            $admin_template = 'main_creloaded.tpl.php';
-        }
+        // todo
         break;
     case 'zencart':
-        $admin_template = 'main_zc.tpl.php';
+        // todo
         break;
     case 'xtc':
         $admin_template = 'main_xtc.tpl.php';
         if (MH_PLATFORM_XTCM) {
             $screen_img = $inst_lang . '_screen_modified.png';
         }
-
-        if (MH_PLATFORM_XTC_SEO) {
-            $admin_template = 'main_xtc_seo.tpl.php';
-        }
-        if (MH_PLATFORM_XTC_ECB) {
-            $admin_template = 'main_xtc_ecb.tpl.php';
-        }
+        // default
+        $screen_img = $inst_lang . '_screen_modified.png';
         break;
     case 'gambio':
-        if (MH_PLATFORM_GAMBIO == 1) {
-            $admin_template = 'main_gambiogx.tpl.php';
-        } elseif (MH_PLATFORM_GAMBIO == 2) {
-            $admin_template = 'main_gambiogx2.tpl.php';
-        }
+        $screen_img = $inst_lang . '_screen_gambio.png';
         break;
     default:
 }
 
 
-*/
 
 
 $cloudloader = new Cloudloader();
@@ -161,7 +138,7 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
                 <div class="row">
                     <div class="col-xs-6">
                         <p>
-                            Mit MailBeez endlich komfortabel, einfach und kostengünstig möglich:
+                            Mit MailBeez endlich komfortabel, einfach und kosteng&uuml;nstig m&ouml;glich:
                         </p>
 
                         <h2>Nutzen Sie das Potenzial Ihres Kunden-Bestandes </h2>
@@ -171,7 +148,7 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
 
                         </p>
 
-                        <p> Mit Hilfe von vorgefertigten Email-Marketing-Modulen kontaktiert MailBeez Ihre Kunden fortlaufend mit hoch-personalisierten, relevanten Emails z.B. zur Kundenrückgewinnung mit Gutscheinen, Bitte um Produktbewertungen, Geburtstags-Glückwünschen. Es können aber auch traditionelle Newsletter versendet werden - mit der Möglichkeit z.B. nach gekauften Produkten und Geografischen Daten zu segmentieren!
+                        <p> Mit Hilfe von vorgefertigten Email-Marketing-Modulen kontaktiert MailBeez Ihre Kunden fortlaufend mit hoch-personalisierten, relevanten Emails z.B. zur Kundenr&uuml;ckgewinnung mit Gutscheinen, Bitte um Produktbewertungen, Geburtstags-Gl&uuml;ckw&uuml;nschen. Es k&ouml;nnen aber auch traditionelle Newsletter versendet werden - mit der M&ouml;glichkeit z.B. nach gekauften Produkten und Geografischen Daten zu segmentieren!
                         </p>
 
                         <p> &nbsp; </p>
@@ -192,7 +169,7 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
                         </p>
 
                         <p>
-                            Sie können das Grundsystem dann nach Bedarf mit kostenfreien, Premium-Modulen erweitern oder das für Sie passende Paket mit monatlicher Zahlung buchen:
+                            Sie k&ouml;nnen das Grundsystem dann nach Bedarf mit kostenfreien, Premium-Modulen erweitern oder das f&uuml;r Sie passende Paket mit monatlicher Zahlung buchen:
 
                         </p>
                     </div>

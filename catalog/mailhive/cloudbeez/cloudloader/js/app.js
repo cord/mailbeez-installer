@@ -86,7 +86,7 @@ Installer.setLoadingBar = function(state, message) {
         progressBarMessage = $('#progressBarMessage')
 
     if (message)
-        progressBarMessage.text(message)
+        progressBarMessage.html(message)
 
     progressBar.removeClass('progress-bar-danger')
     progressBarContainer.removeClass('failed')
@@ -137,7 +137,7 @@ Installer.renderSection = function(section, vars) {
 
     sectionElement
         .renderPartial(section.partial, vars)
-        .prepend($('<h3 />').text(section.label))
+        .prepend($('<h3 />').html(section.label))
         .hide()
         .appendTo(container)
 
@@ -146,13 +146,13 @@ Installer.renderSection = function(section, vars) {
      */
     var sideNav = stepContainer.find('.section-side-nav:first'),
         menuItem = $('<li />').attr('data-section-code', section.code),
-        menuItemLink = $('<a />').attr({ href: "javascript:Installer.showSection('"+section.code+"')"}).text(section.label),
+        menuItemLink = $('<a />').attr({ href: "javascript:Installer.showSection('"+section.code+"')"}).html(section.label),
         sideNavCategory = sideNav.find('[data-section-category="'+section.category+'"]:first')
 
     if (sideNavCategory.length == 0) {
         sideNavCategory = $('<ul />').addClass('nav').attr('data-section-category', section.category)
-        sideNavCategoryTitle = $('<h3 />').text(section.category)
-        if (section.category == "NULL") sideNavCategoryTitle.text('')
+        sideNavCategoryTitle = $('<h3 />').html(section.category)
+        if (section.category == "NULL") sideNavCategoryTitle.html('')
         sideNav.append(sideNavCategoryTitle).append(sideNavCategory)
     }
 
@@ -173,7 +173,7 @@ Installer.renderSectionNav = function() {
 
             if (lastStep && Installer.isSectionVisible(lastStep.code)) {
                 $('<a />')
-                    .text(lastStep.label)
+                    .html(lastStep.label)
                     .addClass('btn btn-default prev')
                     .attr('href', "javascript:Installer.showSection('"+lastStep.code+"')")
                     .appendTo(pageNav)
@@ -181,7 +181,7 @@ Installer.renderSectionNav = function() {
 
             if (nextStep && Installer.isSectionVisible(nextStep.code)) {
                 $('<a />')
-                    .text(nextStep.label)
+                    .html(nextStep.label)
                     .addClass('btn btn-default next')
                     .attr('href', "javascript:Installer.showSection('"+nextStep.code+"')")
                     .appendTo(pageNav)
