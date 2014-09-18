@@ -10,3 +10,127 @@ Die Datei
 kopieren und (shop)/mailhive.php aufrufen.
 
 Nach einem erneuten Login wird MailBeez im Abschnitt 'Zusatzmodule' erscheinen
+
+
+
+
+Im folgenden Details zur vollstaendigen Integration mit Gambio Gx2.1
+
+
+#Gambio - MailBeez Installer Integration
+
+
+## 1. Admin Menü-Eintrag
+
+Updatesicher mit:
+
+    /system/conf/admin_menu/menu_mailbeez.xml
+
+
+Entweder folgende SQL ausfuehren:
+
+	ALTER TABLE admin_access ADD mailbeez INT(1) DEFAULT '0' NOT NULL ;
+	UPDATE admin_access SET mailbeez = '2' WHERE customers_id = 'groups' LIMIT 1;
+	UPDATE admin_access SET mailbeez = '1' WHERE customers_id = '1' LIMIT 1;
+
+
+Oder einmal http://<shop>/mailhive.php aufrufen - dann wird das Recht hinzugefuegt und fuer den Haupt-Admin gesetzt
+
+
+## 2. Neue Dateien - Installer
+
+### MailBeez Installer
+
+	admin/mailbeez.php
+	mailhive/
+	mailhive.php
+
+    /admin/includes/mailbeez/images/mailbeez_gambio_icon.png
+
+
+
+## 3. Neue Dateien - Integration
+
+    Menue
+    /system/conf/admin_menu/menu_mailbeez.xml
+
+    CRM Pad und BeezDesk Kunden Insight
+    /system/overloads/AdminApplicationBottomExtenderComponent/BeezDesk.inc.php
+
+    Dynamische Erweiterung des MailBeez Menues
+    /system/overloads/AdminApplicationTopExtenderComponent/MailBeezAdminApplicationTopExtender.inc.php
+
+    Einbindung des clicktrackers
+    /system/overloads/ApplicationTopExtenderComponent/MailBeezAnalyticsClicktracker.inc.php
+
+    Frontend-Hook fuer MailBeez automatisch ausfuehren und MailBeez BigData Tracking
+    /user_classes/overloads/FooterContentView/MailBeezFooter.inc.php
+
+
+## 3. Änderungen an Shop-Dateien
+
+### Vorbereitung Produktbewertung Profi mit Autologin
+
+
+siehe Einbindung autologin / logoff in
+
+    product_reviews_write.php
+
+
+Sobald das Produktbewertung Profi Modul vorhanden ist, wird auch der Auto-Login funktionieren.
+
+
+### Vorbereitung MailBeez automatisch ausführen
+
+Eintraege wie "/mailhive.php?cron_simple=1" in der Who-Is-Online Tabelle vermeiden
+
+    inc/xtc_update_whos_online.inc.php
+
+sobald
+
+MailBeez automatisch ausführen
+http://www.mailbeez.de/dokumentation/configbeez/config_cron_simple/
+
+oder
+
+MailBeez automatisch ausführen Profi
+http://www.mailbeez.de/dokumentation/mailbeez/config_cron_advanced/
+
+installiert ist, wird der entsprechende Code eingebunden.
+
+
+## 4. Neue Dateien - Module
+
+### Vorbereitung web4design Shopbewertung
+
+Das beliebte Modul "Shopbewertung" von web4design ist ab Version 3 als MailBeez Modul realisiert. Weitere Entwicklungen werden nur an diesem Modul vorgenommen:
+
+	http://www.mailbeez.de/dokumentation/configbeez/config_shopvoting/
+
+Ausserhalb des MailBeez-Modules sind folgende Datei-Rümpfe erforderlich:
+
+	shop-bewertungen-schreiben.php
+	shop-bewertungen.php
+	shop-reviews-write.php
+	shop-reviews.php
+
+
+Die Integration in Shopfrontend ist hier beschrieben:
+
+    http://www.web4design.de/module_infos/deutsch/shopbewertungen/inst-gambgx2.php
+
+und mit
+
+    /user_classes/overloads/ApplicationTopExtenderComponent/MailBeezShopvotingDefault.inc.php
+
+vorbereitet.
+
+Leider fehlt noch eine "richtige" Gambio-Box fuer das Widget.
+
+Mit einer Prüfung wie
+
+	if ( defined('MAILBEEZ_SHOPVOTING_STATUS') && MAILBEEZ_SHOPVOTING_STATUS == 'True' ) {
+	...
+	}
+
+koennte diese nur dann angezeigt werden, wenn das Modul installiert ist
