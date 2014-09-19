@@ -107,9 +107,9 @@ class Cloudloader extends CloudloaderBase
                 break;
             case 'writePermission':
                 $result = (is_writable(PATH_INSTALL)
-                        && is_writable($this->tempDirectory)
-                        && is_writable($this->unzipDirectory)
-                        && is_writable($this->backupDirectory));
+                    && is_writable($this->tempDirectory)
+                    && is_writable($this->unzipDirectory)
+                    && is_writable($this->backupDirectory));
                 break;
             case 'phpVersion':
                 $result = version_compare(PHP_VERSION, "5.2", ">=");
@@ -434,6 +434,20 @@ class Cloudloader extends CloudloaderBase
         return $this->tempDirectory . '/' . $name;
     }
 
+    public function cleanWorkDirectory()
+    {
+        // delete all folders underneath $this->unzipDirectory;
+        $dir = $this->unzipDirectory;
+        $files = array_diff(scandir($dir), array('.', '..'));
+        foreach ($files as $file) {
+            if ($file == 'index.html') {
+                continue;
+            }
+            (is_dir("$dir/$file")) ? $this->delete_folder("$dir/$file") : unlink("$dir/$file");
+        }
+    }
+
+
     //
     // Logging
     //
@@ -559,7 +573,6 @@ class Cloudloader extends CloudloaderBase
         if ($expectedHash != $fileHash) {
             $this->log('File hash mismatch: %s (expected) vs %s (actual)', $expectedHash, $fileHash);
             $this->log('Local file size: %s', filesize($filePath));
-
 
 
             $filePath_failed = $filePath . '_failed';

@@ -11,6 +11,7 @@ $cloudloader->exclude_overwrite_package = array('');
 $cloudloader->run();
 
 $cloudloader->cleanLog();
+@$cloudloader->cleanWorkDirectory();
 $cloudloader->log('Host: %s', php_uname());
 $cloudloader->log('Operating system: %s', PHP_OS);
 $cloudloader->log('Memory limit: %s', ini_get('memory_limit'));
