@@ -13,7 +13,9 @@ if (function_exists('zen_redirect')) {
     define('MH_PLATFORM', 'zencart');
     // sorry zencart - didn't had the time to migrate everything to your DB-Class (might come later - its cool)
     // http://www.zen-cart.com/wiki/index.php/Developers_-_Porting_modules_from_osC
-    require_once(MH_DIR_FS_CATALOG . 'mailhive/common/functions/osc_database.php');
+    require_once(MH_DIR_FS_CATALOG . 'mailhive/cloudbeez/cloudloader/php/osc_database.php');
+
+
 } elseif (function_exists('gm_get_conf')) {
     define('MH_PLATFORM', 'gambio');
     if (!function_exists('xtc_date_short')) {
@@ -27,6 +29,8 @@ if (function_exists('zen_redirect')) {
     define('MH_PLATFORM_GAMBIO', substr($gx_version, 1, 1));
 
 } elseif (defined('PROJECT_VERSION_PLAIN')) {
+    // mercari no longer supported
+    /*
     define('MH_PLATFORM', 'mercari');
     if (!function_exists('date_short')) {
         require_once(DIR_FS_INC . 'inc.date_short.php');
@@ -35,15 +39,16 @@ if (function_exists('zen_redirect')) {
     if (!function_exists('parse_input_field_data')) {
         require_once(DIR_FS_INC . 'inc.parse_input_field_data.php');
     }
-    require_once(MH_DIR_FS_CATALOG . 'mailhive/common/functions/osc_database.php');
+    require_once(MH_DIR_FS_CATALOG . 'mailhive/cloudbeez/cloudloader/php/osc_database.php');
     $db_link = tep_db_connect();
-    require_once(MH_DIR_FS_CATALOG . 'mailhive/common/classes/oscommerce/split_page_results.php');
+//    require_once(MH_DIR_FS_CATALOG . 'mailhive/common/classes/oscommerce/split_page_results.php');
     define('MH_PLATFORM_MERCARI', PROJECT_VERSION_TYPE . ' ' . PROJECT_VERSION_PLAIN);
 
     if (is_object($message_stack)) {
         $messageStack = $message_stack;
     }
 
+    */
 } elseif (function_exists('xtc_redirect')) {
     define('MH_PLATFORM', 'xtc');
     if (!function_exists('xtc_date_short')) {
