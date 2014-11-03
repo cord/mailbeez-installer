@@ -589,9 +589,11 @@ class Cloudloader extends CloudloaderBase
 
     private function prepareServerRequest($uri, $params = array(), $auth_mode = 'private')
     {
-        $params['p'] = MH_PLATFORM;
-        $params['a'] = MH_ID;
-        $params['url'] = base64_encode($this->getBaseUrl());
+
+        $params['p'] = urlencode(base64_encode(serialize(array('domain' => $_SERVER['SERVER_NAME'],
+            'p' => MH_PLATFORM,
+            'a' => MH_ID,
+            'url' => base64_encode($this->getBaseUrl())))));
 
         // set api
 
