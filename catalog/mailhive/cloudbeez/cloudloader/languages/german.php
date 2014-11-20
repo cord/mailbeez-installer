@@ -28,10 +28,10 @@ define('MAILBEEZ_INSTALL_UPDATE_STEP6', 'Abschluss der Systemaktualisierung...')
 
 define('MAILBEEZ_PACKAGE_INSTALL', 'Paket-Installation in Arbeit...');
 define('MAILBEEZ_PACKAGE_INSTALL_STEP6', 'Abschluss der Paket-Installation...');
-define('MAILBEEZ_PACKAGE_INSTALL_FINISH', 'Paket-Installation erfolgreich abgeschlossen');
+define('MAILBEEZ_PACKAGE_INSTALL_FINISH', 'Paket-Installation erfolgreich durchgef&uuml;hrt');
 
 define('MAILBEEZ_PACKAGE_UPDATE', 'Aktualisierung des Paketes...');
-define('MAILBEEZ_PACKAGE_UPDATE_FINISH', 'Aktualisierung des Paketes erfolgreich abgeschlossen');
+define('MAILBEEZ_PACKAGE_UPDATE_FINISH', 'Aktualisierung des Paketes erfolgreich durchgef&uuml;hrt');
 define('MAILBEEZ_PACKAGE_UPDATE_STEP6', 'Abschluss der Paketaktualisierung...');
 
 define('MAILBEEZ_INSTALL_ERROR_FILE_NOT_WRITEABLE', 'Insgesamt %s Datei(en) z.B. <small><ul><li>%s</ul></small> kann/k&ouml;nnen nicht aktualisiert werden - Bitte geben Sie dieser/diesen Datei(en) mit Hilfe eines FTP-Programmes Schreibrechte');
