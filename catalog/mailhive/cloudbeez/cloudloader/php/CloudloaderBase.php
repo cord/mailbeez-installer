@@ -283,7 +283,6 @@ class CloudloaderBase
                 }
                 if ($found_dirs = glob($current_dir . $glob_path, GLOB_ONLYDIR)) {
                     $directories = array_merge($directories, $found_dirs);
-
                 }
             }
 
@@ -294,12 +293,14 @@ class CloudloaderBase
         $target_path = realpath($target_dir) . '/';
 
         if (defined('CLOUDLOADER_DISABLE_DEPLOY') && CLOUDLOADER_DISABLE_DEPLOY && !$test_writable) {
+            $this->debug_output("CLOUDLOADER_DISABLE_DEPLOY\n");
             return true;
         }
 
 
         if ($directories !== FALSE) {
             foreach ($directories as $source_directory) {
+                $this->debug_output("opening directory $source_directory\n");
                 $dir_handle = opendir($source_directory);
                 while (($filename = readdir($dir_handle)) !== FALSE) {
                     // Ignore "." and ".." folders
@@ -307,6 +308,9 @@ class CloudloaderBase
                         continue;
                     }
                     $source_path = $source_directory . '/' . $filename;
+
+                    $this->debug_output("trying to copy $source_path -> $target_path$filename\n");
+
 
                     if ($test_writable) {
                         $this->debug_output("*** check permissions $target_path$filename");
@@ -343,6 +347,8 @@ class CloudloaderBase
 
             return true;
         } else {
+            $this->debug_output("deploy_files error: no directories found\n");
+
             return false;
         }
     }

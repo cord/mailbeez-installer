@@ -67,6 +67,7 @@ class Cloudloader extends CloudloaderBase
 
         if (!is_null($handler = $this->post('handler'))) {
             if (!strlen($handler)) exit;
+//            $this->log('SESSION: %s', print_r($_SESSION, true));
 
             try {
                 $this->log('Execute AJAX handler: %s', $handler);
@@ -82,6 +83,7 @@ class Cloudloader extends CloudloaderBase
                 header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
                 $this->log('Handler error (%s): %s', $handler, $ex->getMessage());
                 $this->log(array('Trace log:', '%s'), $ex->getTraceAsString());
+
                 die($ex->getMessage());
             }
 
@@ -280,7 +282,10 @@ class Cloudloader extends CloudloaderBase
                     throw new Exception('Could not extract application files (not writeable) ' . $write_test);
                 }
 
+                session_write_close();
+                session_start();
                 $_SESSION['mailbeez_installer_workpath'] = $workpath;
+                session_write_close();
 
                 return true;
                 break;
@@ -304,9 +309,10 @@ class Cloudloader extends CloudloaderBase
                 if (!$write_test) {
                     throw new Exception('Could not extract package files (not writeable) ' . $write_test);
                 }
-
+                session_write_close();
+                session_start();
                 $_SESSION['mailbeez_package_installer_workpath'] = $workpath;
-
+                session_write_close();
                 return true;
                 break;
 
@@ -356,9 +362,10 @@ class Cloudloader extends CloudloaderBase
                         'configuration_description' => 'set automatically',
                         'set_function' => ''
                     ), true);
+                    $this->debug_output("set package hash: $package_hash\n");
+                } else {
+                    $this->debug_output("ERROR package hash file not found\n");
                 }
-
-                $this->debug_output("set package hash: $package_hash\n");
 
 
                 break;
