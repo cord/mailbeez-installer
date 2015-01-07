@@ -102,7 +102,8 @@ if ($_GET['cloudloader_mode'] == 'update_core' || $_GET['cloudloader_mode'] == '
 
 <!-- Scripts -->
 <script>
-    window.cloudloader_mode = '<?php echo $_GET['cloudloader_mode'] ?>'
+    window.cloudloader_mode = '<?php echo $_GET['cloudloader_mode'] ?>';
+    window.securityToken = '<?php echo (isset($_SESSION['securityToken']) ? $_SESSION['securityToken'] : '-1') ?>';
 </script>
 <script src="<?php echo $base_path; ?>cloudloader/js/vendor.js"></script>
 <script src="<?php echo $base_path; ?>cloudloader/js/app.js"></script>

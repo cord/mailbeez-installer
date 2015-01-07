@@ -32,5 +32,4 @@ switch ($cloudloader_mode) {
     default:
         break;
 }
-
 ?>
