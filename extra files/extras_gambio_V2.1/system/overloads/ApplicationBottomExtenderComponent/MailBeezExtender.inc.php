@@ -1,4 +1,5 @@
 <?php
+
 /* --------------------------------------------------------------
    HelloWorldExtender.inc.php 2012-01-26 gm
    Gambio GmbH
@@ -11,8 +12,10 @@
 
 class MailBeezExtender extends MailBeezExtender_parent
 {
-	function proceed()
-	{
+    function proceed()
+    {
+
+        ob_start();
         // MailBeez
         if (defined('MAILBEEZ_CRON_SIMPLE_STATUS') && MAILBEEZ_CRON_SIMPLE_STATUS == 'True') {
             @include_once(DIR_FS_CATALOG . 'mailhive/configbeez/config_cron_simple/includes/cron_simple_inc.php');
@@ -29,8 +32,12 @@ class MailBeezExtender extends MailBeezExtender_parent
         }
         // MailBeez BigData Tracking
 
+        $this->v_output_buffer['MAILBEEZ_BOTTOM_CODE'] = ob_get_contents();
+        ob_end_clean();
 
-		parent::proceed();
-	}
+        parent::proceed();
+
+    }
 }
+
 ?>
