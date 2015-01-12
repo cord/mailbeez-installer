@@ -1,45 +1,8 @@
-Gemaess
 
-http://www.mailbeez.de/dokumentation/installation/basic-installation-gambio-gx-2/
-
-Die Datei
-
-/system/conf/AdminMenu/menu_mailbeez.xml
+Beim Update von MailBeez ist folgendes zu beachten
 
 
-kopieren und (shop)/mailhive.php aufrufen.
-
-Nach einem erneuten Login wird MailBeez im Abschnitt 'Zusatzmodule' erscheinen
-
-
-
-
-Im folgenden Details zur vollstaendigen Integration mit Gambio Gx2.1
-
-
-#Gambio - MailBeez Installer Integration
-
-
-## 1. Admin Menue-Eintrag
-
-Updatesicher mit:
-
-    /system/conf/admin_menu/menu_mailbeez.xml
-
-
-Entweder folgende SQL ausfuehren:
-
-	ALTER TABLE admin_access ADD mailbeez INT(1) DEFAULT '0' NOT NULL ;
-	UPDATE admin_access SET mailbeez = '2' WHERE customers_id = 'groups' LIMIT 1;
-	UPDATE admin_access SET mailbeez = '1' WHERE customers_id = '1' LIMIT 1;
-
-
-Oder einmal http://<shop>/mailhive.php aufrufen - dann wird das Recht hinzugefuegt und fuer den Haupt-Admin gesetzt
-
-
-## 2. Neue Dateien - Installer
-
-### MailBeez Installer
+### MailBeez Installer (nur bei manuellen Updates vor Version 2.9.6)
 
 	admin/mailbeez.php
 	mailhive/
@@ -49,7 +12,13 @@ Oder einmal http://<shop>/mailhive.php aufrufen - dann wird das Recht hinzugefue
 
 
 
-## 3. Neue Dateien - Integration
+## 1. Neue Dateien - Integration
+
+ACHTUNG: die Struktur der Integrations-Dateien hat sich mehrfach geändert.
+Folgende Struktur muss vorhanden sein und ggf. überzählige Dateien wie beschrieben entfernen.
+Bei jeder Änderung ist der Cache unter Gambio Admin -> Tools zu leeren.
+Falls die Administration nicht geöffnet werden kann per FTP den Inhalt von /cache auf dem Server löschen.
+
 
     Menue
     /system/conf/admin_menu/menu_mailbeez.xml
@@ -70,9 +39,21 @@ Oder einmal http://<shop>/mailhive.php aufrufen - dann wird das Recht hinzugefue
     /system/overloads/ApplicationBottomExtenderComponent/MailBeezExtender.inc.php
 
 
+	Falls vorhanden, bitte folgende Dateien entfernen:
+
+    /user_classes/overloads/AdminApplicationBottomExtenderComponent/BeezDesk.inc.php
+    /user_classes/overloads/AdminApplicationTopExtenderComponent/MailBeezAdminApplicationTopExtender.inc.php
+    /user_classes/overloads/ApplicationTopExtenderComponent/MailBeezAnalyticsClicktracker.inc.php
+    /user_classes/overloads/ApplicationTopExtenderComponent/MailBeezShopvotingDefault.inc.php
+    /user_classes/overloads/FooterContentView/BeezDeskFooter.inc.php
+    /user_classes/overloads/FooterContentView/MailBeezFooter.inc.php
+    /user_classes/overloads/ApplicationBottomExtenderComponent/BeezDeskExtender.inc.php
+    /user_classes/overloads/ApplicationBottomExtenderComponent/MailBeezExtender.inc.php
 
 
-## 3. Aenderungen an Shop-Dateien
+
+
+## 2. Aenderungen an Shop-Dateien
 
 ### Vorbereitung Produktbewertung Profi mit Autologin
 
@@ -104,17 +85,16 @@ http://www.mailbeez.de/dokumentation/mailbeez/config_cron_advanced/
 installiert ist, wird der entsprechende Code eingebunden.
 
 
-
-
-## 4. Neue Dateien - Module
+## 3. Neue Dateien - Module
 
 ### Vorbereitung web4design Shopbewertung
 
-Das beliebte Modul "Shopbewertung" von web4design ist ab Version 3 als MailBeez Modul realisiert. Weitere Entwicklungen werden nur an diesem Modul vorgenommen:
+Das beliebte Modul "Shopbewertung" von web4design ist ab Version 3 als MailBeez Modul realisiert. 
+Weitere Entwicklungen werden nur an diesem Modul vorgenommen:
 
 	http://www.mailbeez.de/dokumentation/configbeez/config_shopvoting/
 
-Ausserhalb des MailBeez-Modules sind folgende Datei-Ruempfe erforderlich:
+Ausserhalb des MailBeez-Modules sind folgende Datei-R￼mpfe erforderlich:
 
 	shop-bewertungen-schreiben.php
 	shop-bewertungen.php
@@ -128,11 +108,9 @@ Die Integration in Shopfrontend ist hier beschrieben:
 
 und mit
 
-    /system/overloads/ApplicationTopExtenderComponent/MailBeezShopvotingDefault.inc
+    /user_classes/overloads/ApplicationTopExtenderComponent/MailBeezShopvotingDefault.inc.php
 
 vorbereitet.
-
-
 
 Leider fehlt noch eine "richtige" Gambio-Box fuer das Widget.
 

@@ -1,18 +1,18 @@
 <?php
-
 /* --------------------------------------------------------------
-   MailBeez Integration
+   HelloWorldExtender.inc.php 2012-01-26 gm
+   Gambio GmbH
+   http://www.gambio.de
+   Copyright (c) 2012 Gambio GmbH
+   Released under the GNU General Public License (Version 2)
+   [http://www.gnu.org/licenses/gpl-2.0.html]
    --------------------------------------------------------------
 */
 
-class MailBeezFooter extends MailBeezFooter_parent
+class MailBeezExtender extends MailBeezExtender_parent
 {
-    function get_html()
-    {
-
-        # get original output
-        $t_html = parent::get_html();
-
+	function proceed()
+	{
         // MailBeez
         if (defined('MAILBEEZ_CRON_SIMPLE_STATUS') && MAILBEEZ_CRON_SIMPLE_STATUS == 'True') {
             @include_once(DIR_FS_CATALOG . 'mailhive/configbeez/config_cron_simple/includes/cron_simple_inc.php');
@@ -23,15 +23,14 @@ class MailBeezFooter extends MailBeezFooter_parent
         // - MailBeez
 
 
-        // MailBeez Ezako Tracking
+        // MailBeez BigData Tracking
         if (file_exists(DIR_FS_CATALOG . 'mailhive/configbeez/config_ezako/includes/eztracker.php')) {
             @include_once(DIR_FS_CATALOG . 'mailhive/configbeez/config_ezako/includes/eztracker.php');
         }
-        // MailBeez Ezako Tracking
+        // MailBeez BigData Tracking
 
-        # return modified output
-        return $t_html;
-    }
+
+		parent::proceed();
+	}
 }
-
 ?>

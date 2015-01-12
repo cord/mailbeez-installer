@@ -22,7 +22,7 @@ class MailBeezShopvotingDefault extends MailBeezShopvotingDefault_parent
             require_once(DIR_FS_CATALOG . '/mailhive/configbeez/config_shopvoting/classes/Shopvoting_widget.php');
             $shopvoting = new Shopvoting_widget();
             $_SESSION['mailbeez_shopvoting_widget'] = $shopvoting->output();
-        //{$smarty.session.mailbeez_shopvoting_widget}
+            //{$smarty.session.mailbeez_shopvoting_widget}
         }
 
         // for a custom solution
