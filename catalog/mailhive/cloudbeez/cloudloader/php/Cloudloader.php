@@ -282,8 +282,15 @@ class Cloudloader extends CloudloaderBase
                     throw new Exception('Could not extract application files (not writeable) ' . $write_test);
                 }
 
-                session_write_close();
-                session_start();
+
+                // fix strange behaviour not storing sessions on some server
+                // workaround PHP5.2 error
+                // Fatal error: session_start() [<a href='function.session-start'>function.session-start</a>]: Failed to initialize storage module: user (path: /tmp)
+
+                if (version_compare(PHP_VERSION, "5.3", "<=")) {
+                    session_write_close();
+                    session_start();
+                }
                 $_SESSION['mailbeez_installer_workpath'] = $workpath;
                 session_write_close();
 
@@ -309,8 +316,10 @@ class Cloudloader extends CloudloaderBase
                 if (!$write_test) {
                     throw new Exception('Could not extract package files (not writeable) ' . $write_test);
                 }
-                session_write_close();
-                session_start();
+                if (version_compare(PHP_VERSION, "5.3", "<=")) {
+                    session_write_close();
+                    session_start();
+                }
                 $_SESSION['mailbeez_package_installer_workpath'] = $workpath;
                 session_write_close();
                 return true;
