@@ -287,7 +287,7 @@ class Cloudloader extends CloudloaderBase
                 // workaround PHP5.2 error
                 // Fatal error: session_start() [<a href='function.session-start'>function.session-start</a>]: Failed to initialize storage module: user (path: /tmp)
 
-                if (version_compare(PHP_VERSION, "5.3", "<=")) {
+                if (version_compare(PHP_VERSION, "5.3", ">=")) {
                     session_write_close();
                     session_start();
                 }
@@ -316,7 +316,7 @@ class Cloudloader extends CloudloaderBase
                 if (!$write_test) {
                     throw new Exception('Could not extract package files (not writeable) ' . $write_test);
                 }
-                if (version_compare(PHP_VERSION, "5.3", "<=")) {
+                if (version_compare(PHP_VERSION, "5.3", ">=")) {
                     session_write_close();
                     session_start();
                 }
