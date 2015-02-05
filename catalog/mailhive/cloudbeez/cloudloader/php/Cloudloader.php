@@ -51,7 +51,7 @@ class Cloudloader extends CloudloaderBase
         $this->logFile = PATH_INSTALL . '/cloudloader/install.log';
 
         // some servers do not allow to create a zip-file on root level
-        $this->backup_file = (isset($_SESSION['mailbeez_installer_backup_location'])) ? $_SESSION['mailbeez_installer_backup_location'] : '/mailhive' . date("Ymd-His") . '.zip';
+        $this->backup_file = ($this->readSessionVar('mailbeez_installer_backup_location')) ? $this->readSessionVar('mailbeez_installer_backup_location') : '/mailhive' . date("Ymd-His") . '.zip';
 
 
         $this->apikey = CLOUDLOADER_API_KEY;
@@ -60,9 +60,8 @@ class Cloudloader extends CloudloaderBase
 
     public function run()
     {
-
-        $_SESSION['mailbeez_installer_backup_location'] = $this->backup_file;
-        $_SESSION['mailbeez_installer_backup_location_dir'] = $this->backupDirectory . $this->backup_file;
+        $this->writeSessionVar('mailbeez_installer_backup_location', $this->backup_file);
+        $this->writeSessionVar('mailbeez_installer_backup_location_dir', $this->backupDirectory . $this->backup_file);
 
 
         if (!is_null($handler = $this->post('handler'))) {
@@ -263,7 +262,7 @@ class Cloudloader extends CloudloaderBase
                 $exclude_dirs = array('common/templates_c', 'cloudbeez', 'cloudbeez/cloudloader/work', 'cloudbeez/cloudloader/temp', 'cloudbeez/backup');
 
                 $backup_result = $this->backup('../mailhive/', $this->backupDirectory, $this->backup_file, $exclude_dirs);
-                unset($_SESSION['mailbeez_installer_backup_location']);
+                $this->deleteSessionVar('mailbeez_installer_backup_location');
 
                 if (!$backup_result) {
                     throw new Exception('Unable to backup application files');
@@ -282,7 +281,9 @@ class Cloudloader extends CloudloaderBase
                     throw new Exception('Could not extract application files (not writeable) ' . $write_test);
                 }
 
+                $this->writeSessionVar('mailbeez_installer_workpath', $workpath);
 
+                /*
                 // fix strange behaviour not storing sessions on some server
                 // workaround PHP5.2 error
                 // Fatal error: session_start() [<a href='function.session-start'>function.session-start</a>]: Failed to initialize storage module: user (path: /tmp)
@@ -293,7 +294,7 @@ class Cloudloader extends CloudloaderBase
                 }
                 $_SESSION['mailbeez_installer_workpath'] = $workpath;
                 session_write_close();
-
+                */
                 return true;
                 break;
 
@@ -316,23 +317,31 @@ class Cloudloader extends CloudloaderBase
                 if (!$write_test) {
                     throw new Exception('Could not extract package files (not writeable) ' . $write_test);
                 }
+
+                $this->writeSessionVar('mailbeez_package_installer_workpath', $workpath);
+
+
+                /*
                 if (version_compare(PHP_VERSION, "5.3", ">=")) {
                     session_write_close();
                     session_start();
                 }
                 $_SESSION['mailbeez_package_installer_workpath'] = $workpath;
                 session_write_close();
+                */
                 return true;
                 break;
 
             case 'extractCore':
-                $workpath = $_SESSION['mailbeez_installer_workpath'];
+
+                $workpath = $this->readSessionVar('mailbeez_installer_workpath'); //$_SESSION['mailbeez_installer_workpath'];
 
                 $result = $this->deploy_files($workpath, $this->deployDirectory, $this->exclude_overwrite, $this->glob_pattern);
 
                 $this->delete_folder($workpath);
 
-                unset($_SESSION['mailbeez_installer_workpath']);
+                $this->deleteSessionVar('mailbeez_installer_workpath');
+                //unset($_SESSION['mailbeez_installer_workpath']);
 
                 if (!$result) {
                     throw new Exception('Unable to deploy application files');
@@ -346,7 +355,7 @@ class Cloudloader extends CloudloaderBase
 
             case 'extractPackage':
 
-                $workpath = $_SESSION['mailbeez_package_installer_workpath'];
+                $workpath = $this->readSessionVar('mailbeez_package_installer_workpath'); //$_SESSION['mailbeez_package_installer_workpath'];
 
                 $this->debug_output("starting extractPackage: workpath $workpath\n");
 
@@ -355,7 +364,9 @@ class Cloudloader extends CloudloaderBase
 
                 $this->delete_folder($workpath);
 
-                unset($_SESSION['mailbeez_package_installer_workpath']);
+                $this->deleteSessionVar('mailbeez_package_installer_workpath');
+
+                //unset($_SESSION['mailbeez_package_installer_workpath']);
 
                 if (!$result) {
                     throw new Exception('Unable to deploy package files');
@@ -771,6 +782,27 @@ class Cloudloader extends CloudloaderBase
         $content = preg_replace("#href=\"(([a-zA-Z]+://)([a-zA-Z0-9%.;:/=+_-]*))\"#", "href=\"$1" . "?" . $a . "\"", $content);
         return $content;
     }
+
+
+    function writeSessionVar($name, $value)
+    {
+        $filename = $this->tempDirectory . '/var_' . $name . '.txt';
+        $stream = fopen($filename, 'w');
+        fwrite($stream, $value);
+        fclose($stream);
+    }
+
+    function readSessionVar($name)
+    {
+        $value = @file_get_contents($this->tempDirectory . '/var_' . $name . '.txt');
+        return $value;
+    }
+
+    function deleteSessionVar($name) {
+        @unlink($this->tempDirectory . '/var_' . $name . '.txt');
+    }
+
+
 }
 
 
