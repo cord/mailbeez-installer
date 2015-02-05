@@ -305,6 +305,7 @@ class Cloudloader extends CloudloaderBase
 
                 $this->debug_output("starting checkFilePermissionPackage: workpath $workpath\n");
 
+                $this->writeSessionVar('mailbeez_package_installer_workpath', $workpath);
 
                 if (!$workpath) {
                     throw new Exception('Unable to extract package files');
@@ -318,7 +319,6 @@ class Cloudloader extends CloudloaderBase
                     throw new Exception('Could not extract package files (not writeable) ' . $write_test);
                 }
 
-                $this->writeSessionVar('mailbeez_package_installer_workpath', $workpath);
 
 
                 /*
@@ -799,7 +799,7 @@ class Cloudloader extends CloudloaderBase
     }
 
     function deleteSessionVar($name) {
-        @unlink($this->tempDirectory . '/var_' . $name . '.txt');
+       // @unlink($this->tempDirectory . '/var_' . $name . '.txt');
     }
 
 

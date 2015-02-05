@@ -238,6 +238,11 @@ class CloudloaderBase
 
             if (($v_result_list = $archive->extract(PCLZIP_OPT_PATH, $workpath)) == 0) {
                 die("Error : " . $archive->errorInfo(true));
+
+                $this->debug_output("could not extract archive $zipfile<br>");
+                // MAILBEEZ_INSTALL_ERROR_DIR_NOT_CREATE
+                throw new Exception(sprintf('Could not extract package: %s', $archive->errorInfo(true)));
+
             } else {
                 //            var_dump($v_result_list);
 //                $this->debug_output("</pre>");
