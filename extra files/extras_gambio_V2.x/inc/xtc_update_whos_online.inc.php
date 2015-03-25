@@ -54,16 +54,15 @@ function xtc_update_whos_online()
     $stored_customer = xtc_db_fetch_array($stored_customer_query);
 
     if (
-        strstr($wo_last_page_url, 'gm_ajax.php') == false &&
-        strstr($wo_last_page_url, 'gm_corner.gif.php') == false &&
-        strstr($wo_last_page_url, 'favicon.ico') == false &&
-        strstr($wo_last_page_url, 'rss.php') == false &&
-        strstr($wo_last_page_url, '.jpg') == false &&
-        strstr($wo_last_page_url, 'gm_counter_set_screen.php') == false &&
-        strstr($wo_last_page_url, '.js.php') == false &&
-        strstr($wo_last_page_url, 'gm_gprint_ajax.php') == false &&
-        strstr($wo_last_page_url, 'request_port.php') == false
-    ) {
+		strpos($wo_last_page_url, 'favicon.ico') === false &&
+		strpos($wo_last_page_url, 'rss.php') === false &&
+		strpos($wo_last_page_url, '.jpg') === false &&
+		strpos($wo_last_page_url, '.js.php') === false &&
+		strpos($wo_last_page_url, 'request_port.php') === false &&
+		strpos($wo_last_page_url, 'version_info.php') === false &&
+		strpos($wo_last_page_url, 'mailhive.php') === false
+	)
+	{
 
         if ($stored_customer['count'] > 0) {
 

@@ -4,7 +4,6 @@
 <admin_menu>
     <menugroup id="BOX_HEADING_MAILBEEZ" sort="60" background="../../includes/mailbeez/images/mailbeez_gambio_icon.png"
                title="MailBeez">
-        <menuitem link="mailbeez.php" link_param="" sort="1" title="Mailbeez"/>
         {php}
         if (function_exists('mailBeezMenu')) {
         $this->assign("mailbeez_menu", mailBeezMenu());
@@ -12,6 +11,8 @@
         {/php}
         {if isset($mailbeez_menu) && !empty($mailbeez_menu)}
         {$mailbeez_menu}
+        {else}
+        <menuitem link="mailbeez.php" link_param="" sort="1" title="{$txt.MAILBEEZ_MENU_MAIN|default:'Automatisiertes Email-Marketing'}"/>
         {/if}
     </menugroup>
 </admin_menu> 
