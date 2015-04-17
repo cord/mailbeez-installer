@@ -1,12 +1,14 @@
 <?php
+if (!defined('MH_ROOT_PATH')) {
+    define('MH_ROOT_PATH', 'mailhive/');
+}
 
-$base_path = '../mailhive/cloudbeez/';
+$base_path = '../' . MH_ROOT_PATH . 'cloudbeez/';
 
 include $base_path . 'cloudloader/php/boot.php';
 
 
 $screen_img = 'screen_osc.png';
-
 
 switch (MH_PLATFORM) {
     case 'oscommerce':
@@ -92,7 +94,8 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
 
             <div class="row">
                 <div class="col-md-12">
-                    <i class="fa fa-cloud-download fa-5x" style="color:#fff; opacity: 0.25; font-size: 300px; display: inline; position: absolute; top: -80px; right: -100px;z-index: 900"></i>
+                    <i class="fa fa-cloud-download fa-5x"
+                       style="color:#fff; opacity: 0.25; font-size: 300px; display: inline; position: absolute; top: -80px; right: -100px;z-index: 900"></i>
                     <!-- Logo -->
                     <h1 style="z-index: 1000; position: relative">MailBeez</h1>
 
@@ -144,11 +147,16 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
                         <h2>Nutzen Sie das Potenzial Ihres Kunden-Bestandes </h2>
 
                         <p>
-                            MailBeez integriert sich nahtlos mit Ihrem Online-Shop und kann wertvolle Informationen zu Ihren Kunden nutzen.
+                            MailBeez integriert sich nahtlos mit Ihrem Online-Shop und kann wertvolle Informationen zu
+                            Ihren Kunden nutzen.
 
                         </p>
 
-                        <p> Mit Hilfe von vorgefertigten Email-Marketing-Modulen kontaktiert MailBeez Ihre Kunden fortlaufend mit hoch-personalisierten, relevanten Emails z.B. zur Kundenr&uuml;ckgewinnung mit Gutscheinen, Bitte um Produktbewertungen, Geburtstags-Gl&uuml;ckw&uuml;nschen. Es k&ouml;nnen aber auch traditionelle Newsletter versendet werden - mit der M&ouml;glichkeit z.B. nach gekauften Produkten und Geografischen Daten zu segmentieren!
+                        <p> Mit Hilfe von vorgefertigten Email-Marketing-Modulen kontaktiert MailBeez Ihre Kunden
+                            fortlaufend mit hoch-personalisierten, relevanten Emails z.B. zur Kundenr&uuml;ckgewinnung
+                            mit Gutscheinen, Bitte um Produktbewertungen, Geburtstags-Gl&uuml;ckw&uuml;nschen. Es k&ouml;nnen
+                            aber auch traditionelle Newsletter versendet werden - mit der M&ouml;glichkeit z.B. nach
+                            gekauften Produkten und Geografischen Daten zu segmentieren!
                         </p>
 
                         <p> &nbsp; </p>
@@ -169,7 +177,8 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
                         </p>
 
                         <p>
-                            Sie k&ouml;nnen das Grundsystem dann nach Bedarf mit kostenfreien, Premium-Modulen erweitern oder das f&uuml;r Sie passende Paket mit monatlicher Zahlung buchen:
+                            Sie k&ouml;nnen das Grundsystem dann nach Bedarf mit kostenfreien, Premium-Modulen erweitern
+                            oder das f&uuml;r Sie passende Paket mit monatlicher Zahlung buchen:
 
                         </p>
                     </div>
@@ -183,11 +192,12 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
             <?php
             } else {
                 echo $inc_content;
-            }?>
+            } ?>
         </div>
         <div class="row">
             <div class="col-xs-3  pull-right" style="text-align: right; opacity: 0.5; padding-right: 30px;">
-                Version <?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION; ?>-<?php echo MH_PLATFORM; ?>-<?php echo MH_ID; ?>
+                Version <?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION; ?>-<?php echo MH_PLATFORM; ?>
+                -<?php echo MH_ID; ?>
             </div>
         </div>
     </section>

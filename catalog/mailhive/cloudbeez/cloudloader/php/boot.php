@@ -9,7 +9,7 @@ header("Pragma: no-cache");
 
 
 // include local configuration if available
-$local_conf_dir = MH_DIR_FS_CATALOG . 'mailhive/common/local/';
+$local_conf_dir = MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'common/local/';
 if ($dir = @dir($local_conf_dir)) {
     while ($local_conf_file = $dir->read()) {
         if (!is_dir($local_conf_dir . $local_conf_file)) {

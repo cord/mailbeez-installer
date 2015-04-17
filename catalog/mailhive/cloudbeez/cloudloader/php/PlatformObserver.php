@@ -8,12 +8,13 @@ function mh_define($const, $value)
         define($const, $value);
 }
 
+mh_define('MH_ROOT_PATH', 'mailhive/');
 
 if (function_exists('zen_redirect')) {
     define('MH_PLATFORM', 'zencart');
     // sorry zencart - didn't had the time to migrate everything to your DB-Class (might come later - its cool)
     // http://www.zen-cart.com/wiki/index.php/Developers_-_Porting_modules_from_osC
-    require_once(MH_DIR_FS_CATALOG . 'mailhive/cloudbeez/cloudloader/php/osc_database.php');
+    require_once(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/cloudloader/php/osc_database.php');
 
 
 } elseif (function_exists('gm_get_conf')) {
@@ -106,7 +107,7 @@ if (function_exists('zen_redirect')) {
 
         $post = MAILBEEZ_MAILHIVE_WPOLS_PAGE_ID;
         if (MH_CONTEXT == 'STORE') {
-            $GLOBALS['post'] = & get_post($post);
+            $GLOBALS['post'] = &get_post($post);
         } else {
             if (strtolower($_SERVER["REQUEST_METHOD"]) == 'post') {
                 $_GET = $_REQUEST;

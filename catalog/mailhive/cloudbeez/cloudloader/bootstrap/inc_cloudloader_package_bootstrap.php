@@ -1,6 +1,6 @@
 <?php
 
-$base_path = '../mailhive/cloudbeez/';
+$base_path = '../' . MH_ROOT_PATH . 'cloudbeez/';
 
 include $base_path . 'cloudloader/php/boot.php';
 
