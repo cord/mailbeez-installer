@@ -1,4 +1,18 @@
 <?php
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+    
+
 
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
@@ -66,7 +80,7 @@ if (!function_exists('json_encode')) {
 define('PATH_INSTALL', str_replace("\\", "/", realpath(dirname(__FILE__) . "/../../")));
 $url = (defined('CLOUDLOADER_URL')) ? CLOUDLOADER_URL : 'http://cloudbeez.com';
 
-define('CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION', '2.0');
+define('CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION', '2.1');
 define('CLOUDBEEZ_GATEWAY_PUBLIC', $url . '/api/public/v1'); // api/public/v1
 define('CLOUDBEEZ_GATEWAY_PRIVATE', $url . '/api/private/v1'); // api/private/v1
 
@@ -97,4 +111,3 @@ switch ($install_lang) {
         $inst_lang = 'en';
         break;
 }
-?>

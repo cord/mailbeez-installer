@@ -1,5 +1,17 @@
 <?php
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
 
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+ 
 $cloudloader_mode = (isset($_POST['cloudloader_mode'])) ? $_POST['cloudloader_mode'] : $_GET['cloudloader_mode'];
 
 if (!defined('MH_ROOT_PATH')) {
@@ -37,4 +49,3 @@ switch ($cloudloader_mode) {
     default:
         break;
 }
-?>

@@ -1,3 +1,17 @@
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2014 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+
+
 /*!
  * Install Progress (Step 4)
  */

@@ -1,4 +1,17 @@
 <?php
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+
 
 define('MAILBEEZ_INSTALL_TITLE', 'CloudLoader');
 
@@ -44,6 +57,3 @@ define('MAILBEEZ_INSTALL_ERROR_BACKUP', 'Backup failed');
 define('MAILBEEZ_INSTALL_BACKUP_LOCATION', 'Backup: %s');
 
 define('MAILBEEZ_INSTALL_PACKAGE_TITLE', 'Select your Plan');
-
-
-?>

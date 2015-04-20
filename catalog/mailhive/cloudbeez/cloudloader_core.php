@@ -1,4 +1,18 @@
 <?php
+
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+
 // thanks to octobercms.com
 
 $install_lang = $_SESSION['language'];
@@ -144,10 +158,7 @@ if ($_GET['cloudloader_mode'] == 'update_core') {
         {code: 'backupZip', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP3; ?>'},
         {code: 'checkFilePermission', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP4; ?>'},
         {code: 'extractCore', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP5; ?>'},
-        {
-            code: 'finishInstall',
-            label: '<?php echo ($cloudloader_mode == 'install_core') ? MAILBEEZ_INSTALL_INSTALL_STEP6 : MAILBEEZ_INSTALL_UPDATE_STEP6; ?>'
-        }
+        { code: 'finishInstall', label: '<?php echo ($cloudloader_mode == 'install_core') ? MAILBEEZ_INSTALL_INSTALL_STEP6 : MAILBEEZ_INSTALL_UPDATE_STEP6; ?>' }
     ]
 
     /*

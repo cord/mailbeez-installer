@@ -1,4 +1,18 @@
 <?php
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+
+
 if (!defined('MH_ROOT_PATH')) {
     define('MH_ROOT_PATH', 'mailhive/');
 }
@@ -9,6 +23,7 @@ include $base_path . 'cloudloader/php/boot.php';
 
 
 $screen_img = 'screen_osc.png';
+
 
 switch (MH_PLATFORM) {
     case 'oscommerce':
@@ -185,14 +200,14 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
                     <div class="col-xs-6">
                         <div class="device">
 
-                            <img src="../mailhive/cloudbeez/cloudloader/images/<?php echo $screen_img; ?>">
+                            <img src="../<?php echo MH_ROOT_PATH; ?>cloudbeez/cloudloader/images/<?php echo $screen_img; ?>">
                         </div>
                     </div>
                 </div>
             <?php
             } else {
                 echo $inc_content;
-            } ?>
+            }?>
         </div>
         <div class="row">
             <div class="col-xs-3  pull-right" style="text-align: right; opacity: 0.5; padding-right: 30px;">

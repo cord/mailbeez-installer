@@ -12,8 +12,24 @@
 
  */
 
-if (file_exists('mailhive/common/main/inc_mailhive.php')) {
-    include_once('mailhive/common/main/inc_mailhive.php');
+
+// set MH_ROOT_PATH
+if (!defined('MH_ROOT_PATH')) {
+    // default location
+    $_MH_ROOT_PATH = 'mailhive/';
+    $_mh_search_paths = array('ext/mailhive/', 'includes/external/mailhive/');
+
+    foreach ($_mh_search_paths as $_MH_ROOT_PATH_TRY) {
+        if (file_exists($_MH_ROOT_PATH_TRY . 'cloudbeez/cloudloader_core.php')) {
+            $_MH_ROOT_PATH = $_MH_ROOT_PATH_TRY;
+        }
+    }
+
+    define('MH_ROOT_PATH', $_MH_ROOT_PATH);
+}
+
+if (file_exists(MH_ROOT_PATH . 'common/main/inc_mailhive.php')) {
+    include_once(MH_ROOT_PATH . 'common/main/inc_mailhive.php');
 } else {
     // cloudloader installation
 
@@ -88,4 +104,3 @@ if (file_exists('mailhive/common/main/inc_mailhive.php')) {
     Please install MailBeez
 <?php
 }
-?>

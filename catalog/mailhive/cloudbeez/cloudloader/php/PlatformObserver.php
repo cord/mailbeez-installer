@@ -1,4 +1,18 @@
 <?php
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+
+
 
 
 
@@ -124,5 +138,3 @@ mh_define('MH_PLATFORM_GAMBIO', false);
 mh_define('MH_PLATFORM_XTCM', false);
 mh_define('MH_PLATFORM_XTC_SEO', false);
 mh_define('MH_PLATFORM_XTC_ECB', false);
-
-?>

@@ -1,4 +1,18 @@
 <?php
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+    
+
 $cloudloader = new Cloudloader();
 $cloudloader->dir_permissions = 0755;
 $cloudloader->file_permissions = 0755;
@@ -16,5 +30,3 @@ $cloudloader->log('Host: %s', php_uname());
 $cloudloader->log('Operating system: %s', PHP_OS);
 $cloudloader->log('Memory limit: %s', ini_get('memory_limit'));
 $cloudloader->log('Max execution time: %s', ini_get('max_execution_time'));
-
-?>

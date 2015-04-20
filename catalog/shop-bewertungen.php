@@ -35,4 +35,3 @@ if (file_exists(MH_ROOT_PATH . 'configbeez/config_shopvoting/includes/inc_shopvo
     Please install Shopvoting module
 <?php
 }
-?>

@@ -1,4 +1,17 @@
 <?php
+/*
+  MailBeez Automatic Trigger Email Campaigns
+  http://www.mailbeez.com
+
+  Copyright (c) 2010 - 2015 MailBeez
+
+  inspired and in parts based on
+  Copyright (c) 2003 osCommerce
+
+  Released under the GNU General Public License
+
+ */
+    
 
 
 class Cloudloader extends CloudloaderBase
@@ -780,6 +793,9 @@ class Cloudloader extends CloudloaderBase
         $a = 'a=' . MH_ID;
         $content = preg_replace("#href=\"(([a-zA-Z]+://)([a-zA-Z0-9%.;:/=+_-]*[?]+[a-zA-Z0-9&%.;:/=+_-]*))\"#", "href=\"$1" . "&" . $a . "\"", $content);
         $content = preg_replace("#href=\"(([a-zA-Z]+://)([a-zA-Z0-9%.;:/=+_-]*))\"#", "href=\"$1" . "?" . $a . "\"", $content);
+
+        $content = str_replace('mailhive/', MH_ROOT_PATH, $content);
+
         return $content;
     }
 
@@ -804,6 +820,3 @@ class Cloudloader extends CloudloaderBase
 
 
 }
-
-
-?>
