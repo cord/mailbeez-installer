@@ -269,6 +269,7 @@ $.fn.extend({
         // set context for request
         postData["cloudloader_mode"] = window.cloudloader_mode;
         postData["securityToken"] = window.securityToken;
+        postData[window.securityToken_name] = window.securityToken_value;
 
         options = $.extend(true, {
             loadingIndicator: true
