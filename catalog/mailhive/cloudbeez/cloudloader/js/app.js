@@ -268,6 +268,8 @@ $.fn.extend({
         // MailBeez
         // set context for request
         postData["cloudloader_mode"] = window.cloudloader_mode;
+
+        // security token
         postData["securityToken"] = window.securityToken;
         postData[window.securityToken_name] = window.securityToken_value;
 
