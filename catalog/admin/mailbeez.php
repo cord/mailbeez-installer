@@ -8,7 +8,8 @@
   inspired and in parts based on
   Copyright (c) 2003 osCommerce
 
-  Released under the GNU General Public License
+  Released under the GNU General Public License (Version 2)
+  [http://www.gnu.org/licenses/gpl-2.0.html]
 
  */
 
@@ -41,7 +42,6 @@ if (!defined('MH_ROOT_PATH')) {
 
     define('MH_ROOT_PATH', $_MH_ROOT_PATH);
 }
-
 if (isset($_POST['cloudloader_mode']) || isset($_GET['cloudloader_mode'])) {
     // installer entrypoint
     @include(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/dev_environment.php');
