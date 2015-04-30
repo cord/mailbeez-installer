@@ -44,15 +44,19 @@ if (!defined('MH_ROOT_PATH')) {
 }
 if (isset($_POST['cloudloader_mode']) || isset($_GET['cloudloader_mode'])) {
     // installer entrypoint
-    @include(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/dev_environment.php');
-    require_once(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/cloudloader/bootstrap/inc_mailbeez.php');
+    if (file_exists(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/dev_environment.php')) {
+        include(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/dev_environment.php');
+        require_once(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/cloudloader/bootstrap/inc_mailbeez.php');
+    }
 } else {
     if (file_exists(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'common/main/inc_mailbeez.php')) {
         // mailbeez installed
         require_once(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'common/main/inc_mailbeez.php');
     } else {
         // not yet installed, load installer
-        @include(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'common/local/devsettings.php');
+        if (file_exists(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'common/local/devsettings.php')) {
+            include(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'common/local/devsettings.php');
+        }
         // Please install MailBeez
         if (defined('MAILBEEZ_INSTALLER_DISABLED') && MAILBEEZ_INSTALLER_DISABLED) {
             echo "installer disabled";
