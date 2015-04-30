@@ -8,11 +8,13 @@
   inspired and in parts based on
   Copyright (c) 2003 osCommerce
 
-  Released under the GNU General Public License
+  Released under the GNU General Public License (Version 2)
+  [http://www.gnu.org/licenses/gpl-2.0.html]
 
  */
 
 
+// backwards compatiblity
 if (!defined('MH_ROOT_PATH')) {
     define('MH_ROOT_PATH', 'mailhive/');
 }
@@ -200,14 +202,15 @@ $inc_content_common = $cloudloader->getContent('mailbeez_core_common/' . $inst_l
                     <div class="col-xs-6">
                         <div class="device">
 
-                            <img src="../<?php echo MH_ROOT_PATH; ?>cloudbeez/cloudloader/images/<?php echo $screen_img; ?>">
+                            <img
+                                src="../<?php echo MH_ROOT_PATH; ?>cloudbeez/cloudloader/images/<?php echo $screen_img; ?>">
                         </div>
                     </div>
                 </div>
             <?php
             } else {
                 echo $inc_content;
-            }?>
+            } ?>
         </div>
         <div class="row">
             <div class="col-xs-3  pull-right" style="text-align: right; opacity: 0.5; padding-right: 30px;">
