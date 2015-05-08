@@ -658,7 +658,7 @@ class Cloudloader extends CloudloaderBase
         // Issue a HEAD request and follow any redirects.
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 60);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 120);
 //        curl_setopt($curl, CURLOPT_NOBODY, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false); // open_basedir conflict
 
