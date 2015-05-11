@@ -22,6 +22,7 @@ if (!defined('MH_ROOT_PATH')) {
     foreach ($_mh_search_paths as $_MH_ROOT_PATH_TRY) {
         if (file_exists($_MH_ROOT_PATH_TRY . 'cloudbeez/cloudloader_core.php')) {
             $_MH_ROOT_PATH = $_MH_ROOT_PATH_TRY;
+            break;
         }
     }
 
