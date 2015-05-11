@@ -274,8 +274,8 @@ class Cloudloader extends CloudloaderBase
             case 'backupZip':
 
                 $exclude_dirs = array('common/templates_c', 'cloudbeez', 'cloudbeez/cloudloader/work', 'cloudbeez/cloudloader/temp', 'cloudbeez/backup');
-
-                $result = $this->backup('../mailhive/', $this->backupDirectory, $this->backup_file, $exclude_dirs);
+                $backup_dir = '../' . MH_ROOT_PATH;
+                $result = $this->backup($backup_dir, $this->backupDirectory, $this->backup_file, $exclude_dirs);
                 $this->deleteSessionVar('mailbeez_installer_backup_location');
 
                 if (!$result) {
