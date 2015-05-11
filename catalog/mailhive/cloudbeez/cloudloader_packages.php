@@ -121,11 +121,11 @@ if ($_GET['cloudloader_mode'] == 'update_core' || $_GET['cloudloader_mode'] == '
     window.securityToken_name = '<?php echo (isset($_SESSION['CSRFName']) ? $_SESSION['CSRFName'] : 'none') ?>';
     window.securityToken_value = '<?php echo (isset($_SESSION['CSRFToken']) ? $_SESSION['CSRFToken'] : '-1') ?>';
 </script>
-<script src="<?php echo $base_path; ?>cloudloader/js/vendor.js"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/app.js"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/check.js"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/progress.js"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/complete.js"></script>
+<script src="<?php echo $base_path; ?>cloudloader/js/vendor.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
+<script src="<?php echo $base_path; ?>cloudloader/js/app.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
+<script src="<?php echo $base_path; ?>cloudloader/js/check.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
+<script src="<?php echo $base_path; ?>cloudloader/js/progress.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
+<script src="<?php echo $base_path; ?>cloudloader/js/complete.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
 
 <!-- Bespoke Properties -->
 <script>

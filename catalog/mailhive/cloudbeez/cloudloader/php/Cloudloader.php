@@ -1,4 +1,5 @@
 <?php
+
 /*
   MailBeez Automatic Trigger Email Campaigns
   http://www.mailbeez.com
@@ -12,7 +13,6 @@
   [http://www.gnu.org/licenses/gpl-2.0.html]
 
  */
-    
 
 
 class Cloudloader extends CloudloaderBase
@@ -229,7 +229,7 @@ class Cloudloader extends CloudloaderBase
                 $result = $this->requestServerFile('core', $hash, 'core/get', array('type' => 'install'), 'public');
 
                 if (!$result) {
-                    throw new Exception('Unable to open plugin archive file');
+                    throw new Exception('Unable to open download archive file');
                 }
                 break;
 
@@ -275,10 +275,10 @@ class Cloudloader extends CloudloaderBase
 
                 $exclude_dirs = array('common/templates_c', 'cloudbeez', 'cloudbeez/cloudloader/work', 'cloudbeez/cloudloader/temp', 'cloudbeez/backup');
 
-                $backup_result = $this->backup('../mailhive/', $this->backupDirectory, $this->backup_file, $exclude_dirs);
+                $result = $this->backup('../mailhive/', $this->backupDirectory, $this->backup_file, $exclude_dirs);
                 $this->deleteSessionVar('mailbeez_installer_backup_location');
 
-                if (!$backup_result) {
+                if (!$result) {
                     throw new Exception('Unable to backup application files');
                 }
 
@@ -286,16 +286,21 @@ class Cloudloader extends CloudloaderBase
 
             case 'checkFilePermission':
                 $workpath = $this->extract_zip($this->getFilePath('core'), $this->unzipDirectory);
+                $this->debug_output("starting checkFilePermission: workpath $workpath\n");
+
                 if (!$workpath) {
                     throw new Exception('Unable to extract application files');
                 }
 
+                $this->writeSessionVar('mailbeez_installer_workpath', $workpath);
+
                 $write_test = $this->test_deploy_files($workpath, $this->deployDirectory, $this->exclude_overwrite, $this->glob_pattern);
+
                 if (!$write_test) {
                     throw new Exception('Could not extract application files (not writeable) ' . $write_test);
                 }
 
-                $this->writeSessionVar('mailbeez_installer_workpath', $workpath);
+                $result = true;
 
                 /*
                 // fix strange behaviour not storing sessions on some server
@@ -309,7 +314,7 @@ class Cloudloader extends CloudloaderBase
                 $_SESSION['mailbeez_installer_workpath'] = $workpath;
                 session_write_close();
                 */
-                return true;
+//                return true;
                 break;
 
             case 'checkFilePermissionPackage':
@@ -322,7 +327,7 @@ class Cloudloader extends CloudloaderBase
                 $this->writeSessionVar('mailbeez_package_installer_workpath', $workpath);
 
                 if (!$workpath) {
-                    throw new Exception('Unable to extract package files');
+                    throw new Exception('Unable to extract package files - workpath empty');
                 }
 
                 $this->debug_output("starting checkFilePermissionPackage: workpath $workpath\n");
@@ -333,7 +338,7 @@ class Cloudloader extends CloudloaderBase
                     throw new Exception('Could not extract package files (not writeable) ' . $write_test);
                 }
 
-
+                $result = true;
 
                 /*
                 if (version_compare(PHP_VERSION, "5.3", ">=")) {
@@ -343,19 +348,24 @@ class Cloudloader extends CloudloaderBase
                 $_SESSION['mailbeez_package_installer_workpath'] = $workpath;
                 session_write_close();
                 */
-                return true;
+                //return true;
                 break;
 
             case 'extractCore':
 
                 $workpath = $this->readSessionVar('mailbeez_installer_workpath'); //$_SESSION['mailbeez_installer_workpath'];
 
+                if (!$workpath) {
+                    throw new Exception('Unable to extract application files - workpath empty');
+                }
+
                 $result = $this->deploy_files($workpath, $this->deployDirectory, $this->exclude_overwrite, $this->glob_pattern);
 
                 $this->delete_folder($workpath);
 
                 $this->deleteSessionVar('mailbeez_installer_workpath');
-                //unset($_SESSION['mailbeez_installer_workpath']);
+                $this->deleteSessionVar('mailbeez_installer_backup_location');
+                $this->deleteSessionVar('mailbeez_installer_backup_location_dir');
 
                 if (!$result) {
                     throw new Exception('Unable to deploy application files');
@@ -370,6 +380,10 @@ class Cloudloader extends CloudloaderBase
             case 'extractPackage':
 
                 $workpath = $this->readSessionVar('mailbeez_package_installer_workpath'); //$_SESSION['mailbeez_package_installer_workpath'];
+
+                if (!$workpath) {
+                    throw new Exception('Unable to extract package files - workpath empty');
+                }
 
                 $this->debug_output("starting extractPackage: workpath $workpath\n");
 
@@ -401,6 +415,10 @@ class Cloudloader extends CloudloaderBase
                     $this->debug_output("ERROR package hash file not found\n");
                 }
 
+
+                $this->deleteSessionVar('mailbeez_installer_workpath');
+                $this->deleteSessionVar('mailbeez_installer_backup_location');
+                $this->deleteSessionVar('mailbeez_installer_backup_location_dir');
 
                 break;
 
@@ -803,6 +821,7 @@ class Cloudloader extends CloudloaderBase
 
     function writeSessionVar($name, $value)
     {
+        $_SESSION[$name] = $value;
         $filename = $this->tempDirectory . '/var_' . $name . '.txt';
         $stream = fopen($filename, 'w');
         fwrite($stream, $value);
@@ -812,11 +831,13 @@ class Cloudloader extends CloudloaderBase
     function readSessionVar($name)
     {
         $value = @file_get_contents($this->tempDirectory . '/var_' . $name . '.txt');
+        $_SESSION[$name] = $value;
         return $value;
     }
 
-    function deleteSessionVar($name) {
-       // @unlink($this->tempDirectory . '/var_' . $name . '.txt');
+    function deleteSessionVar($name)
+    {
+        @unlink($this->tempDirectory . '/var_' . $name . '.txt');
     }
 
 

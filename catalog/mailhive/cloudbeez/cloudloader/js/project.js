@@ -151,6 +151,9 @@ Installer.Pages.projectForm.attachProject = function(el) {
             Installer.Pages.projectForm.bindAll()
         })
         .fail(function(data){
+            if (typeof data != 'object') {
+                data = $.parseJSON(data);
+            }
             projectFormFailed.show().addClass('animate fade_in')
             projectFormFailed.renderPartial('project/fail', { reason: data.responseText })
         })
@@ -265,6 +268,9 @@ Installer.Pages.projectForm.includePackage = function(el, code) {
             Installer.Pages.projectForm.hilightIncludedPackages($el)
         })
         .fail(function(data){
+            if (typeof data != 'object') {
+                data = $.parseJSON(data);
+            }
             alert(data.responseText)
         })
 }

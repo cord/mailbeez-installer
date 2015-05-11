@@ -112,9 +112,15 @@ Installer.Pages.installProgress.execDefaultStep = function(step, options) {
 
     $.sendRequest('onInstallStep', postData, { loadingIndicator: false })
         .fail(function(data){
+            if (typeof data != 'object') {
+                data = $.parseJSON(data);
+            }
             deferred.reject(data.responseText)
         })
         .done(function(data){
+            if (typeof data != 'object') {
+                data = $.parseJSON(data);
+            }
             options.onSuccess && options.onSuccess(data)
             Installer.setLoadingBar(false)
             setTimeout(function() { deferred.resolve() }, 300)
@@ -157,6 +163,9 @@ Installer.Pages.installProgress.execStep.getMetaDataCore = function(step) {
     return function() {
         return Installer.Pages.installProgress.execDefaultStep(step, {
             onSuccess: function(data) {
+                if (typeof data != 'object') {
+                    data = $.parseJSON(data);
+                }
                 // Save the result for later usage
                 Installer.Data.meta = data.result;
             }
@@ -168,6 +177,9 @@ Installer.Pages.installProgress.execStep.getMetaDataPackage = function(step) {
     return function() {
         return Installer.Pages.installProgress.execDefaultStep(step, {
             onSuccess: function(data) {
+                if (typeof data != 'object') {
+                    data = $.parseJSON(data);
+                }
                 // Save the result for later usage
                 Installer.Data.meta = data.result;
             }
