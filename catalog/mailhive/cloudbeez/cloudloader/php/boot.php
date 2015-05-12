@@ -84,6 +84,9 @@ $url = (defined('CLOUDLOADER_URL')) ? CLOUDLOADER_URL : 'http://cloudbeez.com';
 define('CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION', '2.3');
 define('CLOUDBEEZ_GATEWAY_PUBLIC', $url . '/api/public/v1'); // api/public/v1
 define('CLOUDBEEZ_GATEWAY_PRIVATE', $url . '/api/private/v1'); // api/private/v1
+//define('CLOUDBEEZ_CONNECTION_SPEED_TEST_URL', CLOUDLOADER_URL . '/speedtest_file.zip');
+define('CLOUDBEEZ_CONNECTION_SPEED_TEST_URL', 'http://cloudbeez.com/speedtest_file.zip');
+define('CLOUDBEEZ_CONNECTION_SPEED_LIMIT', 3330000); // 10.000kb / 30s = 333kb/s
 
 require_once 'CloudloaderException.php';
 require_once 'CloudloaderBase.php';

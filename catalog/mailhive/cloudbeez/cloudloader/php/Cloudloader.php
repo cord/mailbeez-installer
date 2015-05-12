@@ -116,8 +116,16 @@ class Cloudloader extends CloudloaderBase
                 $check = $this->requestServerData('ping', '', 'public');
                 $result = (is_array($check) && $check['result']);
                 break;
+            case 'liveConnectionSpeed':
+                $check = $this->serverConnectionSpeedTest();
+                $result = (is_array($check) && $check['result']);
+                break;
             case 'liveConnectionPrivate':
                 $check = $this->requestServerData('ping', '', 'private');
+                $result = (is_array($check) && $check['result']);
+                break;
+            case 'liveConnectionPrivateSpeed':
+                $check = $this->serverConnectionSpeedTest();
                 $result = (is_array($check) && $check['result']);
                 break;
             case 'writePermission':
@@ -546,6 +554,40 @@ class Cloudloader extends CloudloaderBase
         require $this->baseDirectory . '/bootstrap/autoload.php';
         $this->app = $app = require_once $this->baseDirectory . '/bootstrap/start.php';
         $app->boot();
+    }
+
+
+    private function serverConnectionSpeedTest()
+    {
+
+        $result = false;
+
+        $curl = $this->prepareServerRequest(null, null, $auth_mode = 'public');
+
+        // overwrite URI
+        curl_setopt($curl, CURLOPT_URL, CLOUDBEEZ_CONNECTION_SPEED_TEST_URL);
+
+        $filePath = $this->getFilePath('speedtest');
+        $stream = fopen($filePath, 'w');
+
+        curl_setopt($curl, CURLOPT_FILE, $stream);
+
+        $data = curl_exec($curl);
+//        $error = curl_error($curl);
+        $info = curl_getinfo($curl);
+
+
+        curl_close($curl);
+
+        if ($info['speed_download'] > CLOUDBEEZ_CONNECTION_SPEED_LIMIT) {
+            $result = true;
+        }
+
+
+        $_result = array('result' => $result);
+
+        return $_result;
+
     }
 
     private function requestServerData($uri = null, $params = array(), $auth_mode = 'private')

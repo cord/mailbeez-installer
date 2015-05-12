@@ -24,6 +24,7 @@ define('MAILBEEZ_INSTALL_SYSTEM_CHECK_PHP', 'PHP version 5.2 oder h&ouml;her erf
 define('MAILBEEZ_INSTALL_SYSTEM_CHECK_SAFEMODE', 'Safe mode PHP setting muss deaktiviert sein');
 define('MAILBEEZ_INSTALL_SYSTEM_CHECK_CURL', 'cURL PHP Extension ist erforderlich');
 define('MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION', 'Test Verbindung zum CloudBeez-Server aufbauen');
+define('MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION_SPEED', 'Pr&uuml;fe Verbindungs-Geschwindigkeit');
 define('MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_WRITE_PERM', 'Schreib-Rechte f&uuml;r das Installations-Verzeichnis');
 
 define('MAILBEEZ_INSTALL_INSTALL', 'Grund-Installation in Arbeit...');

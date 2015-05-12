@@ -146,6 +146,7 @@ if ($_GET['cloudloader_mode'] == 'update_core') {
         {code: 'safeMode', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_SAFEMODE; ?>'},
         {code: 'curlLibrary', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_CURL; ?>'},
         {code: 'liveConnection', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION; ?>'},
+        {code: 'liveConnectionSpeed', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION_SPEED; ?>'},
         {code: 'writePermission', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_WRITE_PERM; ?>'}
     ]
 
