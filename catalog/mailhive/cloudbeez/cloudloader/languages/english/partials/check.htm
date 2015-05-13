@@ -17,7 +17,7 @@
 
         <div class="scroll-panel">
           <p>This installation / update routine downloads all necessary application files for the MailBeez system and installs / updates them into
-            <code><?php echo MH_ROOT_PATH; ?></code>.</p>
+            <code>/<?php echo MH_ROOT_PATH; ?></code>.</p>
 
           <p>
             Please see
@@ -29,12 +29,12 @@
 
           <p>
             The installer/updater creates a backup of <code><?php echo MH_ROOT_PATH; ?></code> and stores it as zip-archive into
-            <code><?php echo MH_ROOT_PATH; ?>/cloudbeez/backup</code>.
+            <code>/<?php echo MH_ROOT_PATH; ?>cloudbeez/backup</code>.
           </p>
 
           <p>
             All files and folders below
-            <code><?php echo MH_ROOT_PATH; ?></code> must be writeable - the installer checks this before updating the files. It will only update files, when all files are writable.
+            <code>/<?php echo MH_ROOT_PATH; ?></code> must be writeable - the installer checks this before updating the files. It will only update files, when all files are writable.
           </p>
 
         </div>
