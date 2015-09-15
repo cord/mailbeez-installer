@@ -24,6 +24,7 @@ if (!@include('cloudloader/languages/' . $install_lang . '.php')) {
 
 $base_path = '../' . MH_ROOT_PATH . 'cloudbeez/';
 
+include 'cloudloader.php';
 include 'cloudloader/php/boot.php';
 include 'cloudloader/php/CloudloaderInit.php';
 

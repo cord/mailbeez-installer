@@ -23,6 +23,7 @@ if (!@include('cloudloader/languages/' . $install_lang . '.php')) {
 
 $base_path = '../' . MH_ROOT_PATH . 'cloudbeez/';
 
+include 'cloudloader.php';
 include 'cloudloader/php/boot.php';
 include 'cloudloader/php/CloudloaderInit.php';
 
@@ -99,19 +100,19 @@ $partialList = array(
 );
 
 if ($_GET['cloudloader_mode'] == 'update_core' || $_GET['cloudloader_mode'] == 'update_package') {
-    $partialList['complete'] =  'complete_update';
+    $partialList['complete'] = 'complete_update';
 }
 
 ?>
 
 <?php foreach ($partialList as $step => $file): ?>
-    <script type="text/template" data-partial="<?php echo (is_numeric($step) ) ? $file : $step; ?>">
-    <?php
-    if (!@include('cloudloader/languages/' . $install_lang . '/partials/' . $file . '.htm')) {
-        include('cloudloader/languages/english/partials/' . $file . '.htm');
-    }
-    ?>
-  </script>
+    <script type="text/template" data-partial="<?php echo (is_numeric($step)) ? $file : $step; ?>">
+        <?php
+        if (!@include('cloudloader/languages/' . $install_lang . '/partials/' . $file . '.htm')) {
+            include('cloudloader/languages/english/partials/' . $file . '.htm');
+        }
+        ?>
+    </script>
 <?php endforeach ?>
 
 <!-- Scripts -->
@@ -121,11 +122,16 @@ if ($_GET['cloudloader_mode'] == 'update_core' || $_GET['cloudloader_mode'] == '
     window.securityToken_name = '<?php echo (isset($_SESSION['CSRFName']) ? $_SESSION['CSRFName'] : 'none') ?>';
     window.securityToken_value = '<?php echo (isset($_SESSION['CSRFToken']) ? $_SESSION['CSRFToken'] : '-1') ?>';
 </script>
-<script src="<?php echo $base_path; ?>cloudloader/js/vendor.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/app.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/check.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/progress.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
-<script src="<?php echo $base_path; ?>cloudloader/js/complete.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION;?>"></script>
+<script
+    src="<?php echo $base_path; ?>cloudloader/js/vendor.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION; ?>"></script>
+<script
+    src="<?php echo $base_path; ?>cloudloader/js/app.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION; ?>"></script>
+<script
+    src="<?php echo $base_path; ?>cloudloader/js/check.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION; ?>"></script>
+<script
+    src="<?php echo $base_path; ?>cloudloader/js/progress.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION; ?>"></script>
+<script
+    src="<?php echo $base_path; ?>cloudloader/js/complete.js?ver=<?php echo CLOUDBEEZ_MAILBEEZ_INSTALLER_VERSION; ?>"></script>
 
 <!-- Bespoke Properties -->
 <script>
@@ -138,12 +144,15 @@ if ($_GET['cloudloader_mode'] == 'update_core' || $_GET['cloudloader_mode'] == '
 
 
     Installer.Pages.systemCheck.requirements = [
-        { code: 'phpVersion', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_PHP; ?>' },
-        { code: 'safeMode', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_SAFEMODE; ?>' },
-        { code: 'curlLibrary', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_CURL; ?>' },
-        { code: 'liveConnectionPrivate', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION; ?>' },
-        { code: 'liveConnectionPrivateSpeed', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION_SPEED; ?>' },
-        { code: 'writePermission', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_WRITE_PERM; ?>' }
+        {code: 'phpVersion', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_PHP; ?>'},
+        {code: 'safeMode', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_SAFEMODE; ?>'},
+        {code: 'curlLibrary', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_CURL; ?>'},
+        {code: 'liveConnectionPrivate', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION; ?>'},
+        {
+            code: 'liveConnectionPrivateSpeed',
+            label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION_SPEED; ?>'
+        },
+        {code: 'writePermission', label: '<?php echo MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_WRITE_PERM; ?>'}
     ]
 
     /*
@@ -153,12 +162,15 @@ if ($_GET['cloudloader_mode'] == 'update_core' || $_GET['cloudloader_mode'] == '
     Installer.Pages.installProgress.cancelButton = '<?php echo MAILBEEZ_INSTALL_CANCEL; ?>'
 
     Installer.Pages.installProgress.steps = [
-        { code: 'getMetaDataPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP1; ?>' },
-        { code: 'downloadPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP2; ?>' },
-        { code: 'backupZip', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP3; ?>' },
-        { code: 'checkFilePermissionPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP4; ?>' },
-        { code: 'extractPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP5; ?>' },
-        { code: 'finishInstall', label: '<?php echo ($cloudloader_mode == 'install_package') ? MAILBEEZ_PACKAGE_INSTALL_STEP6 : MAILBEEZ_PACKAGE_UPDATE_STEP6; ?>' }
+        {code: 'getMetaDataPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP1; ?>'},
+        {code: 'downloadPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP2; ?>'},
+        {code: 'backupZip', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP3; ?>'},
+        {code: 'checkFilePermissionPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP4; ?>'},
+        {code: 'extractPackage', label: '<?php echo MAILBEEZ_INSTALL_INSTALL_STEP5; ?>'},
+        {
+            code: 'finishInstall',
+            label: '<?php echo ($cloudloader_mode == 'install_package') ? MAILBEEZ_PACKAGE_INSTALL_STEP6 : MAILBEEZ_PACKAGE_UPDATE_STEP6; ?>'
+        }
     ]
 
     /*
