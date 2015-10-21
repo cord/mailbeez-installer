@@ -307,7 +307,8 @@ class CloudloaderBase
             }
 
         }
-//        print_r($directories);
+        $dd = print_r($directories, true);
+        $this->debug_output("directories: $dd \n");
 
 
         $target_path = realpath($target_dir) . '/';
@@ -359,6 +360,7 @@ class CloudloaderBase
                     }
                 }
             }
+
 
             if (sizeof($this->write_test_failed_file) > 0) {
                 throw new Exception(sprintf(MAILBEEZ_INSTALL_ERROR_FILE_NOT_WRITEABLE, sizeof($this->write_test_failed_file), implode('<li>', array_slice($this->write_test_failed_file, 0, 10)) ));
