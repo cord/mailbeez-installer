@@ -47,8 +47,8 @@ if (isset($_POST['cloudloader_mode']) || isset($_GET['cloudloader_mode'])) {
     // installer entrypoint
     if (file_exists(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/dev_environment.php')) {
         include(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/dev_environment.php');
-        require_once(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/cloudloader/bootstrap/inc_mailbeez.php');
     }
+    require_once(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'cloudbeez/cloudloader/bootstrap/inc_mailbeez.php');
 } else {
     if (file_exists(MH_DIR_FS_CATALOG . MH_ROOT_PATH . 'common/main/inc_mailbeez.php')) {
         // mailbeez installed
