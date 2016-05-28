@@ -392,7 +392,7 @@ class CloudloaderBase
 
 //        throw new Exception("Backup parameters $backup_source_folder, $backup_filename, $exclude_files, $exclude_dirs\n");
 //print_r($exclude_dirs);
-        $this->debug_output("Backup parameters $backup_source_folder, $backup_filename, $exclude_dirs\n");
+        $this->debug_output("Backup parameters $backup_source_folder, $backup_filename, " . print_r($exclude_dirs, true) . "\n");
         $res = $this->Zip($backup_source_folder, $backup_filename, '', $exclude_dirs);
 //exit();
 
