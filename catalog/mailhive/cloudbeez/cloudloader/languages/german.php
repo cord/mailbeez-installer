@@ -20,8 +20,8 @@ define('MAILBEEZ_INSTALL_SYSTEM_CHECK', 'System Test');
 define('MAILBEEZ_INSTALL_SYSTEM_CONFIRM', 'Einverstanden & Weiter');
 define('MAILBEEZ_INSTALL_CANCEL', 'Abbrechen');
 
-define('MAILBEEZ_INSTALL_SYSTEM_CHECK_PHP', 'PHP version 5.2 oder h&ouml;her erforderlich');
-define('MAILBEEZ_INSTALL_SYSTEM_CHECK_SAFEMODE', 'Safe mode PHP setting muss deaktiviert sein');
+define('MAILBEEZ_INSTALL_SYSTEM_CHECK_PHP', 'PHP Version 5.2 oder h&ouml;her erforderlich');
+define('MAILBEEZ_INSTALL_SYSTEM_CHECK_SAFEMODE', 'Safe mode PHP Setting muss deaktiviert sein');
 define('MAILBEEZ_INSTALL_SYSTEM_CHECK_CURL', 'cURL PHP Extension ist erforderlich');
 define('MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION', 'Test Verbindung zum CloudBeez-Server aufbauen');
 define('MAILBEEZ_INSTALL_SYSTEM_CHECK_TEST_CONNECTION_SPEED', 'Pr&uuml;fe Verbindungs-Geschwindigkeit');
@@ -37,8 +37,8 @@ define('MAILBEEZ_INSTALL_INSTALL_STEP6', 'Abschluss der Grund-Installation...');
 
 define('MAILBEEZ_INSTALL_INSTALL_FINISH', 'Grund-Installation erfolgreich abgeschlossen');
 
-define('MAILBEEZ_INSTALL_UPDATE', 'Aktualisierung des Grund-Systemes...');
-define('MAILBEEZ_INSTALL_UPDATE_FINISH', 'Aktualisierung des Grund-Systemes erfolgreich abgeschlossen');
+define('MAILBEEZ_INSTALL_UPDATE', 'Aktualisierung des Grundsystems...');
+define('MAILBEEZ_INSTALL_UPDATE_FINISH', 'Aktualisierung des Grundsystems erfolgreich abgeschlossen');
 define('MAILBEEZ_INSTALL_UPDATE_STEP6', 'Abschluss der Systemaktualisierung...');
 
 define('MAILBEEZ_PACKAGE_INSTALL', 'Paket-Installation in Arbeit...');
