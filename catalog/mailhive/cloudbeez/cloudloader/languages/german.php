@@ -41,13 +41,13 @@ define('MAILBEEZ_INSTALL_UPDATE', 'Aktualisierung des Grundsystems...');
 define('MAILBEEZ_INSTALL_UPDATE_FINISH', 'Aktualisierung des Grundsystems erfolgreich abgeschlossen');
 define('MAILBEEZ_INSTALL_UPDATE_STEP6', 'Abschluss der Systemaktualisierung...');
 
-define('MAILBEEZ_PACKAGE_INSTALL', 'Paket-Installation in Arbeit...');
-define('MAILBEEZ_PACKAGE_INSTALL_STEP6', 'Abschluss der Paket-Installation...');
-define('MAILBEEZ_PACKAGE_INSTALL_FINISH', 'Paket-Installation erfolgreich abgeschlossen');
+define('MAILBEEZ_PACKAGE_INSTALL', 'Installation des Profi-Tarifs in Arbeit...');
+define('MAILBEEZ_PACKAGE_INSTALL_FINISH', 'Der Profi-Tarif wurde erfolgreich installiert');
+define('MAILBEEZ_PACKAGE_INSTALL_STEP6', 'Abschluss der Profi-Tarif Installation...');
 
-define('MAILBEEZ_PACKAGE_UPDATE', 'Aktualisierung des Paketes...');
-define('MAILBEEZ_PACKAGE_UPDATE_FINISH', 'Aktualisierung des Paketes erfolgreich abgeschlossen');
-define('MAILBEEZ_PACKAGE_UPDATE_STEP6', 'Abschluss der Paket-Aktualisierung...');
+define('MAILBEEZ_PACKAGE_UPDATE', 'Aktualisierung des Profi-Tarifs...');
+define('MAILBEEZ_PACKAGE_UPDATE_FINISH', 'Der Profi-Tarif wurde erfolgreich aktualisiert');
+define('MAILBEEZ_PACKAGE_UPDATE_STEP6', 'Abschluss der Profi-Tarif Aktualisierung...');
 
 define('MAILBEEZ_INSTALL_ERROR_FILE_NOT_WRITEABLE', 'Insgesamt %s Datei(en) z.B. <small><ul><li>%s</ul></small> kann/k&ouml;nnen nicht aktualisiert werden - Bitte geben Sie dieser/diesen Datei(en) mit Hilfe eines FTP-Programmes Schreibrechte');
 define('MAILBEEZ_INSTALL_ERROR_DIR_NOT_CREATE', 'Das Verzeichnis %s konnte nicht erstellt werden - Bitte pruefen Sie Ihre Server-Konfiguration');
@@ -56,4 +56,4 @@ define('MAILBEEZ_INSTALL_ERROR_BACKUP', 'Backup ist fehlgeschlagen');
 define('MAILBEEZ_INSTALL_BACKUP_LOCATION', 'Backup-Verzeichnis: %s');
 
 
-define('MAILBEEZ_INSTALL_PACKAGE_TITLE', 'W&auml;hlen Sie Ihr Profi-Paket');
+define('MAILBEEZ_INSTALL_PACKAGE_TITLE', 'W&auml;hlen Sie Ihren Profi Tarif');
